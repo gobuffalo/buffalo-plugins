@@ -1,0 +1,5 @@
+package <%= opts.ShortName %>
+
+type Options struct {
+  // add your stuff here
+}

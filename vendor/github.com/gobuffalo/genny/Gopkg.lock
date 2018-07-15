@@ -20,26 +20,10 @@
   version = "v1.0"
 
 [[projects]]
-  name = "github.com/gobuffalo/buffalo"
-  packages = ["plugins"]
-  revision = "25619606ab2ac525ee38a07a15bfcffc832125b4"
-  version = "v0.12.3"
-
-[[projects]]
   name = "github.com/gobuffalo/envy"
   packages = ["."]
   revision = "2d0f467653f3d961ce9ada4d32a230bdcb3bfe11"
   version = "v1.6.3"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/gobuffalo/genny"
-  packages = [
-    ".",
-    "movinglater/gotools",
-    "movinglater/plushgen"
-  ]
-  revision = "ffd975c64cb703683244884cceeb78d7126c6a19"
 
 [[projects]]
   name = "github.com/gobuffalo/packr"
@@ -83,12 +67,6 @@
   ]
   revision = "42d8db6e06e617cdedcc7a849d6690a2cb5a8d28"
   version = "v2.0.0"
-
-[[projects]]
-  name = "github.com/inconshreveable/mousetrap"
-  packages = ["."]
-  revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
-  version = "v1.0"
 
 [[projects]]
   name = "github.com/joho/godotenv"
@@ -219,18 +197,6 @@
   revision = "bd320f5d308e1a3c4314c678d8227a0d72574ae7"
 
 [[projects]]
-  name = "github.com/spf13/cobra"
-  packages = ["."]
-  revision = "ef82de70bb3f60c65fb8eebacbb2d122ef517385"
-  version = "v0.0.3"
-
-[[projects]]
-  name = "github.com/spf13/pflag"
-  packages = ["."]
-  revision = "583c0c0531f06d5278b7d917446061adc344b5cd"
-  version = "v1.0.1"
-
-[[projects]]
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
@@ -266,6 +232,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ea512f161afef4b2eb295c671713164e747852891e9d3dc0c370bd25d6134182"
+  inputs-digest = "c8a23c63598e89977bbd62717fd39bbd86acf0f277dea25ff0e9cc48ac405ab8"
   solver-name = "gps-cdcl"
   solver-version = 1

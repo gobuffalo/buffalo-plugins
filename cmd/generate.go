@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin"
+	"github.com/gobuffalo/buffalo-plugins/genny/plugin/with"
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
@@ -14,7 +15,8 @@ import (
 
 var generateOptions = struct {
 	*plugin.Options
-	dryRun bool
+	withGen bool
+	dryRun  bool
 }{
 	Options: &plugin.Options{},
 }
@@ -45,6 +47,14 @@ var generateCmd = &cobra.Command{
 		}
 		r.With(g)
 
+		if generateOptions.withGen {
+			g, err = with.GenerateCmd(generateOptions.Options)
+			if err != nil {
+				return errors.WithStack(err)
+			}
+			r.With(g)
+		}
+
 		g, err = gotools.GoFmt(r.Root)
 		if err != nil {
 			return errors.WithStack(err)
@@ -57,6 +67,7 @@ var generateCmd = &cobra.Command{
 
 func init() {
 	generateCmd.Flags().BoolVarP(&generateOptions.dryRun, "dry-run", "d", false, "run the generator without creating files or running commands")
+	generateCmd.Flags().BoolVar(&generateOptions.withGen, "with-gen", false, "creates a generator plugin")
 	generateCmd.Flags().StringVarP(&generateOptions.Author, "author", "a", "", "author's name")
 	generateCmd.Flags().StringVarP(&generateOptions.ShortName, "short-name", "s", "", "a 'short' name for the package")
 	rootCmd.AddCommand(generateCmd)
