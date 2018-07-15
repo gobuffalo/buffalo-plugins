@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/gobuffalo/buffalo/plugins"
+	"github.com/gobuffalo/buffalo-plugins/plugins"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )

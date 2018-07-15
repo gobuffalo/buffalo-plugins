@@ -20,12 +20,6 @@
   version = "v1.0"
 
 [[projects]]
-  name = "github.com/gobuffalo/buffalo"
-  packages = ["plugins"]
-  revision = "25619606ab2ac525ee38a07a15bfcffc832125b4"
-  version = "v0.12.3"
-
-[[projects]]
   name = "github.com/gobuffalo/envy"
   packages = ["."]
   revision = "2d0f467653f3d961ce9ada4d32a230bdcb3bfe11"
@@ -266,6 +260,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ea512f161afef4b2eb295c671713164e747852891e9d3dc0c370bd25d6134182"
+  inputs-digest = "aeed598208c9a77817cf36119766e284cbfb571472b96601621652e2736f0fab"
   solver-name = "gps-cdcl"
   solver-version = 1
