@@ -1,0 +1,15 @@
+# <%= opts.PluginPkg %>
+
+TODO: Description
+
+## Installation
+
+```bash
+$ go get -u -v <%= opts.PluginPkg %>
+```
+
+## Usage
+
+```bash
+$ buffalo <%= opts.ShortName %> --help
+```
