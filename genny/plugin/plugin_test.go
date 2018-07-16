@@ -32,6 +32,9 @@ func Test_Generator(t *testing.T) {
 			r.Contains(body, opts.PluginPkg)
 		case "main.go":
 			r.Contains(body, opts.PluginPkg+"/cmd")
+		case "bar/version.go":
+			r.Contains(body, opts.ShortName)
+			r.Contains(body, "v0.0.0")
 		}
 		return nil
 	}
@@ -41,4 +44,5 @@ func Test_Generator(t *testing.T) {
 	run.With(g)
 
 	r.NoError(run.Run())
+	r.True(false)
 }

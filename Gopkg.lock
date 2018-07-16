@@ -33,7 +33,7 @@
     "movinglater/gotools",
     "movinglater/plushgen"
   ]
-  revision = "ffd975c64cb703683244884cceeb78d7126c6a19"
+  revision = "03b607825d4ea3788a0e230cee9a2568b2b7839d"
 
 [[projects]]
   name = "github.com/gobuffalo/packr"

@@ -20,5 +20,8 @@ func New(opts *Options) (*genny.Generator, error) {
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
+	g.Transformer(genny.Replace("-shortName-", opts.ShortName))
+	g.Transformer(genny.Replace("-dot-", "."))
+
 	return g, nil
 }

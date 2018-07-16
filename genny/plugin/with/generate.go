@@ -1,8 +1,6 @@
 package with
 
 import (
-	"strings"
-
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
@@ -21,13 +19,8 @@ func GenerateCmd(opts *plugin.Options) (*genny.Generator, error) {
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
 
-	t := genny.NewTransformer("*", func(f genny.File) (genny.File, error) {
-		name := f.Name()
-		name = strings.Replace(name, "-shortName-", opts.ShortName, -1)
-		name = strings.Replace(name, "-dot-", ".", -1)
-		return genny.NewFile(name, f), nil
-	})
-	g.Transformer(t)
+	g.Transformer(genny.Replace("-shortName-", opts.ShortName))
+	g.Transformer(genny.Replace("-dot-", "."))
 
 	return g, nil
 }
