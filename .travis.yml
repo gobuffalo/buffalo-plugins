@@ -6,6 +6,8 @@ go:
   - "1.10"
   - tip
 
+script: make ci
+
 matrix:
   allow_failures:
     - go: 'tip'
