@@ -2,24 +2,20 @@ package cmd
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin"
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin/with"
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
-
-var generateOptions = struct {
-	*plugin.Options
-	withGen bool
-	dryRun  bool
-}{
-	Options: &plugin.Options{},
-}
 
 // generateCmd represents the generate command
 var generateCmd = &cobra.Command{
@@ -27,33 +23,52 @@ var generateCmd = &cobra.Command{
 	Short: "generates a new buffalo plugin",
 	Long:  "buffalo generate plugin github.com/foo/buffalo-bar",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) > 0 {
-			generateOptions.PluginPkg = args[0]
+		popts := &plugin.Options{
+			Author:    viper.GetString("author"),
+			ShortName: viper.GetString("short-name"),
 		}
-		if err := plugin.NormalizeOptions(generateOptions.Options); err != nil {
+		if len(args) > 0 {
+			popts.PluginPkg = args[0]
+		}
+		if err := plugin.NormalizeOptions(popts); err != nil {
 			return errors.WithStack(err)
 		}
 
 		r := genny.WetRunner(context.Background())
-		if generateOptions.dryRun {
+		if viper.GetBool("dry-run") {
 			r = genny.DryRunner(context.Background())
 		}
 		r.Root = filepath.Join(envy.GoPath(), "src")
-		r.Root = filepath.Join(r.Root, generateOptions.Options.PluginPkg)
+		r.Root = filepath.Join(r.Root, popts.PluginPkg)
 
-		g, err := plugin.New(generateOptions.Options)
+		g, err := plugin.New(popts)
 		if err != nil {
 			return errors.WithStack(err)
 		}
 		r.With(g)
 
-		if generateOptions.withGen {
-			g, err = with.GenerateCmd(generateOptions.Options)
+		if viper.GetBool("with-gen") {
+			g, err = with.GenerateCmd(popts)
 			if err != nil {
 				return errors.WithStack(err)
 			}
 			r.With(g)
 		}
+
+		lopts := &licenser.Options{
+			Author: viper.GetString("author"),
+			Name:   viper.GetString("license"),
+		}
+
+		g, err = licenser.New(lopts)
+		if err := licenser.NormalizeOptions(lopts); err != nil {
+			return errors.WithStack(err)
+		}
+
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		r.With(g)
 
 		g, err = gotools.GoFmt(r.Root)
 		if err != nil {
@@ -66,9 +81,11 @@ var generateCmd = &cobra.Command{
 }
 
 func init() {
-	generateCmd.Flags().BoolVarP(&generateOptions.dryRun, "dry-run", "d", false, "run the generator without creating files or running commands")
-	generateCmd.Flags().BoolVar(&generateOptions.withGen, "with-gen", false, "creates a generator plugin")
-	generateCmd.Flags().StringVarP(&generateOptions.Author, "author", "a", "", "author's name")
-	generateCmd.Flags().StringVarP(&generateOptions.ShortName, "short-name", "s", "", "a 'short' name for the package")
+	generateCmd.Flags().BoolP("dry-run", "d", false, "run the generator without creating files or running commands")
+	generateCmd.Flags().Bool("with-gen", false, "creates a generator plugin")
+	generateCmd.Flags().StringP("author", "a", "", "author's name")
+	generateCmd.Flags().StringP("license", "l", "mit", fmt.Sprintf("choose a license from: [%s]", strings.Join(licenser.Available, ", ")))
+	generateCmd.Flags().StringP("short-name", "s", "", "a 'short' name for the package")
+	viper.BindPFlags(generateCmd.Flags())
 	rootCmd.AddCommand(generateCmd)
 }

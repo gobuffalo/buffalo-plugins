@@ -4,18 +4,23 @@ require (
 	dmitri.shuralyov.com/text/kebabcase v0.0.0-20180217051803-40e40b42552a
 	github.com/davecgh/go-spew v1.1.0
 	github.com/fatih/structs v1.0.0
+	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gobuffalo/envy v1.6.3
-	github.com/gobuffalo/genny v0.0.0-20180716183804-03b607825d4e
+	github.com/gobuffalo/genny v0.0.0-20180716211505-8a5050c5dc6d
 	github.com/gobuffalo/packr v1.11.1
 	github.com/gobuffalo/plush v0.0.0-20180619220412-2ec029f415ed
 	github.com/gobuffalo/tags v0.0.0-20180702174034-96c7cdfcadcb
 	github.com/gobuffalo/uuid v0.0.0-20180207211247-3a9fb6c5c481
 	github.com/gobuffalo/validate v0.0.0-20180210182920-42d8db6e06e6
+	github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce
 	github.com/inconshreveable/mousetrap v1.0.0
 	github.com/joho/godotenv v1.2.0
+	github.com/magiconair/properties v1.8.0
 	github.com/markbates/going v1.0.0
 	github.com/markbates/inflect v1.0.0
 	github.com/microcosm-cc/bluemonday v1.0.0
+	github.com/mitchellh/mapstructure v0.0.0-20180715050151-f15292f7a699
+	github.com/pelletier/go-toml v1.2.0
 	github.com/pkg/errors v0.8.0
 	github.com/pmezard/go-difflib v1.0.0
 	github.com/russross/blackfriday v0.0.0-20180428102519-11635eb403ff
@@ -32,10 +37,16 @@ require (
 	github.com/sirupsen/logrus v1.0.5
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e
+	github.com/spf13/afero v1.1.1
+	github.com/spf13/cast v1.2.0
 	github.com/spf13/cobra v0.0.3
+	github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
 	github.com/spf13/pflag v1.0.1
+	github.com/spf13/viper v1.0.2
 	github.com/stretchr/testify v1.2.2
 	golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
 	golang.org/x/net v0.0.0-20180712202826-d0887baf81f4
 	golang.org/x/sys v0.0.0-20180715085529-ac767d655b30
+	golang.org/x/text v0.3.0
+	gopkg.in/yaml.v2 v2.2.1
 )
