@@ -1,8 +1,7 @@
 package cmd
 
 import (
-  "encoding/json"
-  "os"
+    "fmt"
 
   "<%= opts.PluginPkg %>/<%= opts.ShortName %>"
   "github.com/gobuffalo/buffalo-plugins/plugins"
