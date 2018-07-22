@@ -2,10 +2,8 @@ package cmd
 
 import (
 	"context"
-	"path/filepath"
 
 	"<%= opts.PluginPkg %>/genny/<%= opts.ShortName %>"
-	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
 	"github.com/pkg/errors"
