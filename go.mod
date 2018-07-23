@@ -6,9 +6,9 @@ require (
 	github.com/fatih/structs v1.0.0
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gobuffalo/envy v1.6.3
-	github.com/gobuffalo/genny v0.0.0-20180716211505-8a5050c5dc6d
-	github.com/gobuffalo/packr v1.11.1
-	github.com/gobuffalo/plush v0.0.0-20180619220412-2ec029f415ed
+	github.com/gobuffalo/genny v0.0.0-20180723180007-901a6b6587c7
+	github.com/gobuffalo/packr v1.12.0
+	github.com/gobuffalo/plush v0.0.0-20180720182107-d4510ca09612
 	github.com/gobuffalo/tags v0.0.0-20180702174034-96c7cdfcadcb
 	github.com/gobuffalo/uuid v0.0.0-20180207211247-3a9fb6c5c481
 	github.com/gobuffalo/validate v0.0.0-20180210182920-42d8db6e06e6
@@ -34,7 +34,7 @@ require (
 	github.com/shurcooL/highlight_go v0.0.0-20170515013102-78fb10f4a5f8
 	github.com/shurcooL/octicon v0.0.0-20180602230221-c42b0e3b24d9
 	github.com/shurcooL/sanitized_anchor_name v0.0.0-20170918181015-86672fcb3f95
-	github.com/sirupsen/logrus v1.0.5
+	github.com/sirupsen/logrus v1.0.6
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e
 	github.com/spf13/afero v1.1.1
@@ -44,9 +44,10 @@ require (
 	github.com/spf13/pflag v1.0.1
 	github.com/spf13/viper v1.0.2
 	github.com/stretchr/testify v1.2.2
-	golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
-	golang.org/x/net v0.0.0-20180712202826-d0887baf81f4
+	golang.org/x/crypto v0.0.0-20180723164146-c126467f60eb
+	golang.org/x/net v0.0.0-20180719180050-a680a1efc54d
 	golang.org/x/sys v0.0.0-20180715085529-ac767d655b30
 	golang.org/x/text v0.3.0
+	golang.org/x/tools v0.0.0-20180722150005-60ffea201e66
 	gopkg.in/yaml.v2 v2.2.1
 )

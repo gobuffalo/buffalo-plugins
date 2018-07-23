@@ -43,27 +43,28 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:dcb0fd46558f4ab18b64f43ae6d358ce56bfff3b6a11170f17396897b71b9324"
+  digest = "1:a31157f040cc9e872dc5edf4f3057b543796f1d84cdc379c795a6e4e3731b8d5"
   name = "github.com/gobuffalo/genny"
   packages = [
     ".",
     "movinglater/gotools",
+    "movinglater/gotools/goimports",
     "movinglater/licenser",
     "movinglater/plushgen",
   ]
   pruneopts = "UT"
-  revision = "8a5050c5dc6d7fb605f4ec3d0caf7fc629847d09"
+  revision = "901a6b6587c71b323c4ae90f32fd70990a4c2713"
 
 [[projects]]
-  digest = "1:234bd3c0b701cdb49dbda54821eecf2fc76431618751ee69e95248e358b26fdb"
+  digest = "1:2155aded3b7f51598751f556d9a524d92b35ad4aa4bb41f2d69a0f4ca76a5bfd"
   name = "github.com/gobuffalo/packr"
   packages = ["."]
   pruneopts = "UT"
-  revision = "bd47f2894846e32edcf9aa37290fef76c327883f"
-  version = "v1.11.1"
+  revision = "147bee9cde84aeca6693d1b1aedc595298f24d5b"
+  version = "v1.12.0"
 
 [[projects]]
-  digest = "1:da5c0e6444a8d215ef99df16ef279df608ed32edf827670bacc0f26a7087e186"
+  digest = "1:35faf555b32262572e43425a9510bdb98c09f64d0df10abede086bddcfce5e70"
   name = "github.com/gobuffalo/plush"
   packages = [
     ".",
@@ -73,8 +74,8 @@
     "token",
   ]
   pruneopts = "UT"
-  revision = "2ec029f415ed9a8a1448a5bb389d79084d606035"
-  version = "v3.7.7"
+  revision = "d4510ca0961285d24ffa9c8bb7116bc25c2be950"
+  version = "v3.7.8"
 
 [[projects]]
   digest = "1:4da8cfee903aecfb4f8ed744db3af8ebbb805b7ca592959bea5235b4ba9fe7a9"
@@ -303,12 +304,12 @@
   revision = "86672fcb3f950f35f2e675df2240550f2a50762f"
 
 [[projects]]
-  digest = "1:9e9193aa51197513b3abcb108970d831fbcf40ef96aa845c4f03276e1fa316d2"
+  digest = "1:d867dfa6751c8d7a435821ad3b736310c2ed68945d05b50fb9d23aee0540c8cc"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
   pruneopts = "UT"
-  revision = "c155da19408a8799da419ed3eeb0cb5db0ad5dbc"
-  version = "v1.0.5"
+  revision = "3e01752db0189b9157070a0e1668a620f9a85da2"
+  version = "v1.0.6"
 
 [[projects]]
   branch = "master"
@@ -394,7 +395,7 @@
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
   pruneopts = "UT"
-  revision = "a49355c7e3f8fe157a85be2f77e6e269a0f89602"
+  revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
 
 [[projects]]
   branch = "master"
@@ -405,7 +406,7 @@
     "html/atom",
   ]
   pruneopts = "UT"
-  revision = "d0887baf81f4598189d4e12a37c6da86f0bba4d0"
+  revision = "a680a1efc54dd51c040b3b5ce4939ea3cf2ea0d1"
 
 [[projects]]
   branch = "master"
@@ -432,6 +433,18 @@
   pruneopts = "UT"
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:a464115f461c773a2b5ac42633ded88addc01fa36458345a7620959d839c578b"
+  name = "golang.org/x/tools"
+  packages = [
+    "go/ast/astutil",
+    "imports",
+    "internal/fastwalk",
+  ]
+  pruneopts = "UT"
+  revision = "60ffea201e66e0d9375dc5bec85245d7b416710f"
 
 [[projects]]
   digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
