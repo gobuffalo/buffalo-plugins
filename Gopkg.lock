@@ -43,7 +43,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a31157f040cc9e872dc5edf4f3057b543796f1d84cdc379c795a6e4e3731b8d5"
+  digest = "1:58470c557904695fe4da7158dbd73e3b3cec296be909156b0d7cf3884c2c6f45"
   name = "github.com/gobuffalo/genny"
   packages = [
     ".",
@@ -53,7 +53,7 @@
     "movinglater/plushgen",
   ]
   pruneopts = "UT"
-  revision = "901a6b6587c71b323c4ae90f32fd70990a4c2713"
+  revision = "240cf84423b8ee97d72170bdec254cb08bfb5cf0"
 
 [[projects]]
   digest = "1:2155aded3b7f51598751f556d9a524d92b35ad4aa4bb41f2d69a0f4ca76a5bfd"
@@ -444,7 +444,7 @@
     "internal/fastwalk",
   ]
   pruneopts = "UT"
-  revision = "60ffea201e66e0d9375dc5bec85245d7b416710f"
+  revision = "96ee42108acc4bbbcdc1714606a25b974b4cc50c"
 
 [[projects]]
   digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"

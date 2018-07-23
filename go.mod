@@ -6,7 +6,7 @@ require (
 	github.com/fatih/structs v1.0.0
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gobuffalo/envy v1.6.3
-	github.com/gobuffalo/genny v0.0.0-20180723180007-901a6b6587c7
+	github.com/gobuffalo/genny v0.0.0-20180723195219-240cf84423b8
 	github.com/gobuffalo/packr v1.12.0
 	github.com/gobuffalo/plush v0.0.0-20180720182107-d4510ca09612
 	github.com/gobuffalo/tags v0.0.0-20180702174034-96c7cdfcadcb
@@ -48,6 +48,6 @@ require (
 	golang.org/x/net v0.0.0-20180719180050-a680a1efc54d
 	golang.org/x/sys v0.0.0-20180715085529-ac767d655b30
 	golang.org/x/text v0.3.0
-	golang.org/x/tools v0.0.0-20180722150005-60ffea201e66
+	golang.org/x/tools v0.0.0-20180723183023-96ee42108acc
 	gopkg.in/yaml.v2 v2.2.1
 )

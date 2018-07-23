@@ -75,6 +75,7 @@ var generateCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 		r.With(g)
+		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))
 
 		return r.Run()
 	},
@@ -83,6 +84,7 @@ var generateCmd = &cobra.Command{
 func init() {
 	generateCmd.Flags().BoolP("dry-run", "d", false, "run the generator without creating files or running commands")
 	generateCmd.Flags().Bool("with-gen", false, "creates a generator plugin")
+	generateCmd.Flags().BoolP("force", "f", false, "will delete the target directory if it exists")
 	generateCmd.Flags().StringP("author", "a", "", "author's name")
 	generateCmd.Flags().StringP("license", "l", "mit", fmt.Sprintf("choose a license from: [%s]", strings.Join(licenser.Available, ", ")))
 	generateCmd.Flags().StringP("short-name", "s", "", "a 'short' name for the package")
