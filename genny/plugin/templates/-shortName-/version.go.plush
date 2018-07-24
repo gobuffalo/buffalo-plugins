@@ -1,7 +1,3 @@
 package <%= opts.ShortName %>
 
-func init() {
-fmt.Println(time.Now())
-}
-
 const Version = "v0.0.0"
