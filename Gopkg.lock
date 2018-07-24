@@ -43,7 +43,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:58470c557904695fe4da7158dbd73e3b3cec296be909156b0d7cf3884c2c6f45"
+  digest = "1:8dca747782b55e36399122cee9e7e6a4ad092566a27bada4edaf7393f01a8865"
   name = "github.com/gobuffalo/genny"
   packages = [
     ".",
@@ -53,7 +53,7 @@
     "movinglater/plushgen",
   ]
   pruneopts = "UT"
-  revision = "240cf84423b8ee97d72170bdec254cb08bfb5cf0"
+  revision = "e9a91ec4620068644722709cfcc57e73dcb13a91"
 
 [[projects]]
   digest = "1:2155aded3b7f51598751f556d9a524d92b35ad4aa4bb41f2d69a0f4ca76a5bfd"
@@ -64,7 +64,7 @@
   version = "v1.12.0"
 
 [[projects]]
-  digest = "1:35faf555b32262572e43425a9510bdb98c09f64d0df10abede086bddcfce5e70"
+  digest = "1:51c790782ce2ddbb9006718136d92a05053c9607a3cd070e3117b26757858580"
   name = "github.com/gobuffalo/plush"
   packages = [
     ".",
@@ -74,8 +74,8 @@
     "token",
   ]
   pruneopts = "UT"
-  revision = "d4510ca0961285d24ffa9c8bb7116bc25c2be950"
-  version = "v3.7.8"
+  revision = "726a3d7f08d2665e95e495175ddb68da00868572"
+  version = "v3.7.9"
 
 [[projects]]
   digest = "1:4da8cfee903aecfb4f8ed744db3af8ebbb805b7ca592959bea5235b4ba9fe7a9"
@@ -444,7 +444,7 @@
     "internal/fastwalk",
   ]
   pruneopts = "UT"
-  revision = "96ee42108acc4bbbcdc1714606a25b974b4cc50c"
+  revision = "ded554d0681e0cba3cf074977cdc12e2c0906fe6"
 
 [[projects]]
   digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
