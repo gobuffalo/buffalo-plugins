@@ -40,6 +40,7 @@ var generateCmd = &cobra.Command{
 		}
 		r.Root = filepath.Join(envy.GoPath(), "src")
 		r.Root = filepath.Join(r.Root, popts.PluginPkg)
+		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))
 
 		g, err := plugin.New(popts)
 		if err != nil {
@@ -75,7 +76,6 @@ var generateCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 		r.With(g)
-		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))
 
 		return r.Run()
 	},
