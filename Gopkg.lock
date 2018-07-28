@@ -43,17 +43,18 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8dca747782b55e36399122cee9e7e6a4ad092566a27bada4edaf7393f01a8865"
+  digest = "1:fe98aecfd900ca1125db8f273aeb5fb343354e6193b2d9e9d0f2ae6063cac616"
   name = "github.com/gobuffalo/genny"
   packages = [
     ".",
+    "movinglater/dep",
     "movinglater/gotools",
     "movinglater/gotools/goimports",
     "movinglater/licenser",
     "movinglater/plushgen",
   ]
   pruneopts = "UT"
-  revision = "e9a91ec4620068644722709cfcc57e73dcb13a91"
+  revision = "565ab8a042ac179c18643743037aeb9be335c5af"
 
 [[projects]]
   digest = "1:2155aded3b7f51598751f556d9a524d92b35ad4aa4bb41f2d69a0f4ca76a5bfd"
@@ -64,7 +65,7 @@
   version = "v1.12.0"
 
 [[projects]]
-  digest = "1:51c790782ce2ddbb9006718136d92a05053c9607a3cd070e3117b26757858580"
+  digest = "1:b3807dd9e678441cd0a107054f8c3e4bb8983bed292ec195b1614b69d43a8d49"
   name = "github.com/gobuffalo/plush"
   packages = [
     ".",
@@ -78,7 +79,7 @@
   version = "v3.7.9"
 
 [[projects]]
-  digest = "1:4da8cfee903aecfb4f8ed744db3af8ebbb805b7ca592959bea5235b4ba9fe7a9"
+  digest = "1:20f46367dc905818a64aec83b44ede9f10b829211ed92b770a8c3b0db96b8ce8"
   name = "github.com/gobuffalo/tags"
   packages = [
     ".",
@@ -110,7 +111,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ac64f01acc5eeea9dde40e326de6b6471e501392ec06524c3b51033aa50789bc"
+  digest = "1:a361611b8c8c75a1091f00027767f7779b29cb37c456a71b8f2604c88057ab40"
   name = "github.com/hashicorp/hcl"
   packages = [
     ".",
@@ -152,7 +153,7 @@
   version = "v1.8.0"
 
 [[projects]]
-  digest = "1:924ef794421864d5e8f09952e3eeb84f4c4e60f8d27335bf53fcb0993e6ee375"
+  digest = "1:a5f36fa8d52dcbd334afa5c9b3662319b0f60002a4c4514121457ad0fb9e6ac0"
   name = "github.com/markbates/going"
   packages = [
     "defaults",
@@ -244,7 +245,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:df0c6c0048f6a4db85f081bcf8ca7873518329511d85dbb1ad0030382f9486cd"
+  digest = "1:c46a4157f74a181fab75707f9af94d77f8fcb1285d8eccd9451788586f42fe3e"
   name = "github.com/shurcooL/go"
   packages = [
     "parserutil",
@@ -328,7 +329,7 @@
   revision = "bd320f5d308e1a3c4314c678d8227a0d72574ae7"
 
 [[projects]]
-  digest = "1:37ace7f35375adec11634126944bdc45a673415e2fcc07382d03b75ec76ea94c"
+  digest = "1:bd1ae00087d17c5a748660b8e89e1043e1e5479d0fea743352cda2f8dd8c4f84"
   name = "github.com/spf13/afero"
   packages = [
     ".",
@@ -347,7 +348,7 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:872fa275c31e1f9db31d66fa9b1d4a7bb9a080ff184e6977da01f36bfbe07f11"
+  digest = "1:645cabccbb4fa8aab25a956cbcbdf6a6845ca736b2c64e197ca7cbb9d210b939"
   name = "github.com/spf13/cobra"
   packages = ["."]
   pruneopts = "UT"
@@ -379,7 +380,7 @@
   version = "v1.0.2"
 
 [[projects]]
-  digest = "1:befd7181c2f92c9f05abf17cd7e15538919f19cf7871d794cacc45a4fb99c135"
+  digest = "1:c40d65817cdd41fac9aa7af8bed56927bb2d6d47e4fea566a74880f5c2b1c41e"
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
@@ -399,28 +400,28 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ee15023f3a869df3a9a871cd54da8651e211dc99ab6e19e87cca7ddac94a10e0"
+  digest = "1:cc9018972f0ec220424cadedf663d90048bafe045c5c82bbec23fa221cb8cf38"
   name = "golang.org/x/net"
   packages = [
     "html",
     "html/atom",
   ]
   pruneopts = "UT"
-  revision = "a680a1efc54dd51c040b3b5ce4939ea3cf2ea0d1"
+  revision = "3673e40ba22529d22c3fd7c93e97b0ce50fa7bdd"
 
 [[projects]]
   branch = "master"
-  digest = "1:72d6244a51be9611f08994aca19677fcc31676b3e7b742c37e129e6ece4ad8fc"
+  digest = "1:8742e6e73627b2877c3f723bc1823d5667ec59011242480309dc90fa862512aa"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "ac767d655b305d4e9612f5f6e33120b9176c4ad4"
+  revision = "bd9dbc187b6e1dacfdd2722a87e83093c2d7bd6e"
 
 [[projects]]
-  digest = "1:038003d098ffc345c4c5c6d47bcc6920b2649ee0c0d557162e54e75c76cadf8b"
+  digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
   name = "golang.org/x/text"
   packages = [
     "internal/gen",
@@ -436,7 +437,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a464115f461c773a2b5ac42633ded88addc01fa36458345a7620959d839c578b"
+  digest = "1:e1c96c8c8ce0af57da9dccb008e540b3d13b55ea04b530fb4fceb81706082bdd"
   name = "golang.org/x/tools"
   packages = [
     "go/ast/astutil",
@@ -444,7 +445,7 @@
     "internal/fastwalk",
   ]
   pruneopts = "UT"
-  revision = "ded554d0681e0cba3cf074977cdc12e2c0906fe6"
+  revision = "8cc4e8a6f4841aa92a8683fca47bc5d64b58875b"
 
 [[projects]]
   digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
@@ -460,6 +461,7 @@
   input-imports = [
     "github.com/gobuffalo/envy",
     "github.com/gobuffalo/genny",
+    "github.com/gobuffalo/genny/movinglater/dep",
     "github.com/gobuffalo/genny/movinglater/gotools",
     "github.com/gobuffalo/genny/movinglater/licenser",
     "github.com/gobuffalo/genny/movinglater/plushgen",

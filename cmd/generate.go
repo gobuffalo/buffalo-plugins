@@ -10,6 +10,7 @@ import (
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin/with"
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/movinglater/dep"
 	"github.com/gobuffalo/genny/movinglater/gotools"
 	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/pkg/errors"
@@ -72,6 +73,12 @@ var generateCmd = &cobra.Command{
 		r.With(g)
 
 		g, err = gotools.GoFmt(r.Root)
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		r.With(g)
+
+		g, err = dep.Init(r.Root, true)
 		if err != nil {
 			return errors.WithStack(err)
 		}
