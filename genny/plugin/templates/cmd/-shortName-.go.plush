@@ -4,9 +4,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// herokuCmd represents the heroku command
+// <%= opts.ShortName %>Cmd represents the <%= opts.ShortName %> command
 var <%= opts.ShortName %>Cmd = &cobra.Command{
-	Use:   "heroku",
+	Use:   "<%= opts.ShortName %>",
 	Short: "description about this plugin",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return nil
