@@ -43,8 +43,7 @@ func Test_GenerateCmd(t *testing.T) {
 			r.Contains(body, "package bar")
 			r.Contains(body, "type Options struct {")
 		case "cmd/available.go":
-			r.Contains(body, `{Name: generateCmd.Use, BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases},
-	`)
+			r.Contains(body, `{Name: "bar", UseCommand: "generate", BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases}`)
 		}
 		return nil
 	}
