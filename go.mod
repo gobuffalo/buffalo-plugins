@@ -1,0 +1,53 @@
+module github.com/gobuffalo/buffalo-plugins
+
+require (
+	dmitri.shuralyov.com/text/kebabcase v0.0.0-20180217051803-40e40b42552a
+	github.com/davecgh/go-spew v1.1.0
+	github.com/fatih/structs v1.0.0
+	github.com/fsnotify/fsnotify v1.4.7
+	github.com/gobuffalo/envy v1.6.3
+	github.com/gobuffalo/genny v0.0.0-20180806173259-478bcf215c3e
+	github.com/gobuffalo/github_flavored_markdown v1.0.0
+	github.com/gobuffalo/packr v1.12.1
+	github.com/gobuffalo/plush v0.0.0-20180806154719-8d37e0b25872
+	github.com/gobuffalo/tags v2.0.6+incompatible
+	github.com/gobuffalo/uuid v2.0.0+incompatible
+	github.com/gobuffalo/validate v2.0.0+incompatible
+	github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce
+	github.com/inconshreveable/mousetrap v1.0.0
+	github.com/joho/godotenv v1.2.0
+	github.com/magiconair/properties v1.8.0
+	github.com/markbates/going v1.0.0
+	github.com/markbates/inflect v1.0.0
+	github.com/microcosm-cc/bluemonday v1.0.0
+	github.com/mitchellh/mapstructure v0.0.0-20180715050151-f15292f7a699
+	github.com/pelletier/go-toml v1.2.0
+	github.com/pkg/errors v0.8.0
+	github.com/pmezard/go-difflib v1.0.0
+	github.com/serenize/snaker v0.0.0-20171204205717-a683aaf2d516
+	github.com/sergi/go-diff v1.0.0
+	github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e
+	github.com/shurcooL/go-goon v0.0.0-20170922171312-37c2f522c041
+	github.com/shurcooL/graphql v0.0.0-20180514000029-62c9ce094e75
+	github.com/shurcooL/highlight_diff v0.0.0-20170515013008-09bb4053de1b
+	github.com/shurcooL/highlight_go v0.0.0-20170515013102-78fb10f4a5f8
+	github.com/shurcooL/octicon v0.0.0-20180602230221-c42b0e3b24d9
+	github.com/shurcooL/sanitized_anchor_name v0.0.0-20170918181015-86672fcb3f95
+	github.com/sirupsen/logrus v1.0.6
+	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d
+	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e
+	github.com/spf13/afero v1.1.1
+	github.com/spf13/cast v1.2.0
+	github.com/spf13/cobra v0.0.3
+	github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
+	github.com/spf13/pflag v1.0.1
+	github.com/spf13/viper v1.0.2
+	github.com/stretchr/testify v1.2.2
+	golang.org/x/crypto v0.0.0-20180806171022-f792edd33d2c
+	golang.org/x/net v0.0.0-20180801234040-f4c29de78a2a
+	golang.org/x/sys v0.0.0-20180806082429-34b17bdb4300
+	golang.org/x/text v0.3.0
+	golang.org/x/tools v0.0.0-20180803180156-3c07937fe18c
+	gopkg.in/russross/blackfriday.v1 v1.5.1
+	gopkg.in/yaml.v2 v2.2.1
+)
