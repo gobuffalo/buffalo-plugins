@@ -35,23 +35,23 @@
 
 [[constraint]]
   name = "github.com/gobuffalo/packr"
-  version = "1.11.1"
+  version = "1.13.1"
 
 [[constraint]]
   name = "github.com/gobuffalo/plush"
-  version = "3.7.7"
+  version = "3.7.13"
 
 [[constraint]]
   name = "github.com/markbates/going"
-  version = "1.0.0"
+  version = "1.0.1"
 
-[[override]]
+[[constraint]]
   name = "github.com/pkg/errors"
   version = "0.8.0"
 
 [[constraint]]
   name = "github.com/sirupsen/logrus"
-  version = "1.0.5"
+  version = "1.0.6"
 
 [[constraint]]
   name = "github.com/spf13/cobra"
@@ -59,7 +59,7 @@
 
 [[constraint]]
   name = "github.com/spf13/viper"
-  version = "1.0.2"
+  version = "1.1.0"
 
 [[constraint]]
   name = "github.com/stretchr/testify"
