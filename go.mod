@@ -3,7 +3,7 @@ module github.com/gobuffalo/buffalo-plugins
 require (
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/gobuffalo/envy v1.6.3
-	github.com/gobuffalo/genny v0.0.0-20180812201120-a616fa4f2325
+	github.com/gobuffalo/genny v0.0.0-20180814213115-70d573d41303
 	github.com/gobuffalo/packr v1.13.1
 	github.com/gobuffalo/plush v0.0.0-20180810170812-274552812256
 	github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce // indirect
@@ -17,7 +17,7 @@ require (
 	github.com/spf13/afero v1.1.1 // indirect
 	github.com/spf13/cast v1.2.0 // indirect
 	github.com/spf13/cobra v0.0.3
-	github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec // indirect
+	github.com/spf13/jwalterweatherman v0.0.0-20180814060501-14d3d4c51834 // indirect
 	github.com/spf13/viper v1.1.0
 	github.com/stretchr/testify v1.2.2
 	golang.org/x/text v0.3.0 // indirect

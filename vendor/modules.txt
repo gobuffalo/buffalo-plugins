@@ -6,7 +6,7 @@ github.com/fatih/structs
 github.com/fsnotify/fsnotify
 # github.com/gobuffalo/envy v1.6.3
 github.com/gobuffalo/envy
-# github.com/gobuffalo/genny v0.0.0-20180812201120-a616fa4f2325
+# github.com/gobuffalo/genny v0.0.0-20180814213115-70d573d41303
 github.com/gobuffalo/genny
 github.com/gobuffalo/genny/movinglater/dep
 github.com/gobuffalo/genny/movinglater/gotools
@@ -89,7 +89,7 @@ github.com/spf13/afero/mem
 github.com/spf13/cast
 # github.com/spf13/cobra v0.0.3
 github.com/spf13/cobra
-# github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
+# github.com/spf13/jwalterweatherman v0.0.0-20180814060501-14d3d4c51834
 github.com/spf13/jwalterweatherman
 # github.com/spf13/pflag v1.0.2
 github.com/spf13/pflag
@@ -103,13 +103,13 @@ golang.org/x/crypto/ssh/terminal
 # golang.org/x/net v0.0.0-20180811021610-c39426892332
 golang.org/x/net/html
 golang.org/x/net/html/atom
-# golang.org/x/sys v0.0.0-20180810173357-98c5dad5d1a0
+# golang.org/x/sys v0.0.0-20180814072032-4e1fef560951
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 # golang.org/x/text v0.3.0
 golang.org/x/text/transform
 golang.org/x/text/unicode/norm
-# golang.org/x/tools v0.0.0-20180810201625-27709f6afec4
+# golang.org/x/tools v0.0.0-20180813205110-a434f64ace81
 golang.org/x/tools/imports
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/internal/fastwalk
