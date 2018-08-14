@@ -6,7 +6,7 @@ github.com/fatih/structs
 github.com/fsnotify/fsnotify
 # github.com/gobuffalo/envy v1.6.3
 github.com/gobuffalo/envy
-# github.com/gobuffalo/genny v0.0.0-20180814213115-70d573d41303
+# github.com/gobuffalo/genny v0.0.0-20180814214027-0379aef007c4
 github.com/gobuffalo/genny
 github.com/gobuffalo/genny/movinglater/dep
 github.com/gobuffalo/genny/movinglater/gotools
