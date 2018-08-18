@@ -10,8 +10,8 @@ import (
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin/with"
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/dep"
 	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -78,11 +78,11 @@ var generateCmd = &cobra.Command{
 		}
 		r.With(g)
 
-		g, err = dep.Init(r.Root, true)
+		gg, err := gomods.New(popts.PluginPkg, r.Root)
 		if err != nil {
 			return errors.WithStack(err)
 		}
-		r.With(g)
+		gg.With(r)
 
 		return r.Run()
 	},
