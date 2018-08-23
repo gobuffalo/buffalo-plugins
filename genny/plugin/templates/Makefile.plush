@@ -2,7 +2,7 @@ GO_BIN ?= go
 
 deps:
 	$(GO_BIN) get -v github.com/gobuffalo/packr/packr
-	$(GO_BIN) get ./...
+	$(GO_BIN) get -v -t ./...
 
 install: deps
 	packr
