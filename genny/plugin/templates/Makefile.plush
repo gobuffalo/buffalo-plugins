@@ -1,7 +1,7 @@
 GO_BIN ?= go
 
 deps:
-	$(GO_BIN) install -v github.com/gobuffalo/packr/packr
+	$(GO_BIN) get -v github.com/gobuffalo/packr/packr
 	$(GO_BIN) get ./...
 
 install: deps
