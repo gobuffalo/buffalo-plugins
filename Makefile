@@ -4,10 +4,13 @@ deps:
 	$(GO_BIN) get -v github.com/gobuffalo/packr/packr
 	$(GO_BIN) get -v -t ./...
 
+build: deps
+	packr
+	$(GO_BIN) build -v .
+
 install: deps
 	packr
 	$(GO_BIN) install -v .
-	packr clean
 
 test:
 	$(GO_BIN) test -tags ${TAGS} ./...
