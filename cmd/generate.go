@@ -39,6 +39,7 @@ var generateCmd = &cobra.Command{
 		if viper.GetBool("dry-run") {
 			r = genny.DryRunner(context.Background())
 		}
+
 		r.Root = filepath.Join(envy.GoPath(), "src")
 		r.Root = filepath.Join(r.Root, popts.PluginPkg)
 		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))

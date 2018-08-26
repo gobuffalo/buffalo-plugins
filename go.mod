@@ -3,10 +3,9 @@ module github.com/gobuffalo/buffalo-plugins
 require (
 	github.com/BurntSushi/toml v0.3.0 // indirect
 	github.com/gobuffalo/envy v1.6.4
-	github.com/gobuffalo/genny v0.0.0-20180823134419-80135003197d
+	github.com/gobuffalo/genny v0.0.0-20180826140831-cc696d79f3ae
 	github.com/gobuffalo/packr v1.13.3
 	github.com/gobuffalo/plush v3.7.16+incompatible
-	github.com/gobuffalo/tags v2.0.10+incompatible // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/magiconair/properties v1.8.0 // indirect
@@ -21,7 +20,4 @@ require (
 	github.com/spf13/jwalterweatherman v0.0.0-20180814060501-14d3d4c51834 // indirect
 	github.com/spf13/viper v1.1.0
 	github.com/stretchr/testify v1.2.2
-	golang.org/x/net v0.0.0-20180826012351-8a410e7b638d // indirect
-	golang.org/x/sys v0.0.0-20180824143301-4910a1d54f87 // indirect
-	golang.org/x/tools v0.0.0-20180826000951-f6ba57429505 // indirect
 )

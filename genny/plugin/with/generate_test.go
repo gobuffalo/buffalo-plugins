@@ -27,24 +27,29 @@ func Test_GenerateCmd(t *testing.T) {
 
 	r.NoError(run.Run())
 
-	run.FileFn = func(f genny.File) error {
-		return nil
-	}
+	res := run.Results()
+	r.Len(res.Commands, 0)
+	r.Len(res.Files, 5)
 
-	for _, f := range run.Results().Files {
-		body := f.String()
-		switch f.Name() {
-		case "cmd/generate.go":
-			r.Contains(body, opts.PluginPkg+"/genny/")
-		case "genny/bar/bar.go":
-			r.Contains(body, "package bar")
-			r.Contains(body, "func New(opts *Options) (*genny.Generator, error)")
-		case "genny/bar/options.go":
-			r.Contains(body, "package bar")
-			r.Contains(body, "type Options struct {")
-		case "cmd/available.go":
-			r.Contains(body, `{Name: generateCmd.Use, BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases}`)
-		}
-	}
+	f := res.Files[0]
+	r.Equal("cmd/available.go", f.Name())
+	r.Contains(f.String(), `{Name: generateCmd.Use, BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases}`)
+
+	f = res.Files[1]
+	r.Equal("cmd/generate.go", f.Name())
+	r.Contains(f.String(), opts.PluginPkg+"/genny/")
+
+	f = res.Files[2]
+	r.Equal("genny/bar/bar.go", f.Name())
+	r.Contains(f.String(), "package bar")
+	r.Contains(f.String(), "func New(opts *Options) (*genny.Generator, error)")
+
+	f = res.Files[3]
+	r.Equal("genny/bar/options.go", f.Name())
+	r.Contains(f.String(), "package bar")
+	r.Contains(f.String(), "type Options struct {")
+
+	f = res.Files[4]
+	r.Equal("genny/bar/templates/example.txt", f.Name())
 
 }

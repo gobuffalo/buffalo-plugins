@@ -20,7 +20,7 @@ func GenerateCmd(opts *plugin.Options) (*genny.Generator, error) {
 	g.Transformer(plushgen.Transformer(ctx))
 
 	g.Transformer(genny.Replace("-shortName-", opts.ShortName))
-	g.Transformer(genny.Replace("-dot-", "."))
+	g.Transformer(genny.Dot())
 
 	return g, nil
 }
