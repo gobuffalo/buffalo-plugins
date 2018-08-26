@@ -1,17 +1,17 @@
 TAGS ?= "sqlite"
 GO_BIN ?= go
 
+install: deps
+	packr
+	$(GO_BIN) install -v .
+
 deps:
-	$(GO_BIN) get -v github.com/gobuffalo/packr/packr
-	$(GO_BIN) get -tags ${TAGS} -v -t ./...
+	$(GO_BIN) get github.com/gobuffalo/packr/packr
+	$(GO_BIN) get -tags ${TAGS} -t ./...
 
 build: deps
 	packr
 	$(GO_BIN) build -v .
-
-install: deps
-	packr
-	$(GO_BIN) install -v .
 
 test:
 	$(GO_BIN) test -tags ${TAGS} ./...
