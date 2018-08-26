@@ -18,3 +18,9 @@ test:
 
 ci-test: deps
 	$(GO_BIN) test -tags ${TAGS} -race ./...
+
+update:
+	$(GO_BIN) get -u
+	$(GO_BIN) mod tidy
+	packr
+	make test
