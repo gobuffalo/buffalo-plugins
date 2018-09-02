@@ -8,16 +8,16 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_normalizeOptions(t *testing.T) {
+func Test_Options_Validate(t *testing.T) {
 	r := require.New(t)
 
 	opts := &Options{}
-	err := NormalizeOptions(opts)
+	err := opts.Validate()
 	r.Error(err)
 
 	opts.PluginPkg = "github.com/foo/bar"
 
-	err = NormalizeOptions(opts)
+	err = opts.Validate()
 	r.NoError(err)
 	r.Equal("github.com/foo/buffalo-bar", opts.PluginPkg)
 

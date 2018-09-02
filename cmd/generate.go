@@ -11,7 +11,6 @@ import (
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
-	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -27,12 +26,10 @@ var generateCmd = &cobra.Command{
 		popts := &plugin.Options{
 			Author:    viper.GetString("author"),
 			ShortName: viper.GetString("short-name"),
+			License:   viper.GetString("license"),
 		}
 		if len(args) > 0 {
 			popts.PluginPkg = args[0]
-		}
-		if err := plugin.NormalizeOptions(popts); err != nil {
-			return errors.WithStack(err)
 		}
 
 		r := genny.WetRunner(context.Background())
@@ -40,50 +37,29 @@ var generateCmd = &cobra.Command{
 			r = genny.DryRunner(context.Background())
 		}
 
-		r.Root = filepath.Join(envy.GoPath(), "src")
-		r.Root = filepath.Join(r.Root, popts.PluginPkg)
-		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))
+		popts.Root = filepath.Join(envy.GoPath(), "src")
 
-		g, err := plugin.New(popts)
+		gg, err := plugin.New(popts)
 		if err != nil {
 			return errors.WithStack(err)
 		}
-		r.With(g)
+		r.Root = popts.Root
+		r.WithRun(genny.Force(r.Root, viper.GetBool("force")))
+		r.WithGroup(gg)
 
 		if viper.GetBool("with-gen") {
-			g, err = with.GenerateCmd(popts)
+			gg, err := with.GenerateCmd(popts)
 			if err != nil {
 				return errors.WithStack(err)
 			}
-			r.With(g)
+			r.WithGroup(gg)
 		}
 
-		lopts := &licenser.Options{
-			Author: viper.GetString("author"),
-			Name:   viper.GetString("license"),
-		}
-
-		g, err = licenser.New(lopts)
-		if err := licenser.NormalizeOptions(lopts); err != nil {
-			return errors.WithStack(err)
-		}
-
+		g, err := gotools.GoFmt(r.Root)
 		if err != nil {
 			return errors.WithStack(err)
 		}
 		r.With(g)
-
-		g, err = gotools.GoFmt(r.Root)
-		if err != nil {
-			return errors.WithStack(err)
-		}
-		r.With(g)
-
-		gg, err := gomods.New(popts.PluginPkg, r.Root)
-		if err != nil {
-			return errors.WithStack(err)
-		}
-		gg.With(r)
 
 		return r.Run()
 	},

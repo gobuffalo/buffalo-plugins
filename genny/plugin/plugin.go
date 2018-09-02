@@ -2,26 +2,45 @@ package plugin
 
 import (
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/plush"
 	"github.com/pkg/errors"
 )
 
-func New(opts *Options) (*genny.Generator, error) {
-	g := genny.New()
+func New(opts *Options) (*genny.Group, error) {
+	gg := &genny.Group{}
 
-	err := NormalizeOptions(opts)
-	if err != nil {
-		return g, errors.WithStack(err)
+	if err := opts.Validate(); err != nil {
+		return gg, errors.WithStack(err)
 	}
 
+	g := genny.New()
 	g.Box(packr.NewBox("../plugin/templates"))
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
 	g.Transformer(genny.Replace("-shortName-", opts.ShortName))
-	g.Transformer(genny.Replace("-dot-", "."))
+	g.Transformer(genny.Dot())
+	gg.Add(g)
 
-	return g, nil
+	lopts := &licenser.Options{
+		Author: opts.Author,
+		Name:   opts.License,
+	}
+
+	g, err := licenser.New(lopts)
+	if err != nil {
+		return gg, errors.WithStack(err)
+	}
+	gg.Add(g)
+
+	gm, err := gomods.New(opts.PluginPkg, opts.Root)
+	if err != nil && errors.Cause(err) != gomods.ErrModsOff {
+		return gg, errors.WithStack(err)
+	}
+	gg.Merge(gm)
+	return gg, nil
 }

@@ -14,6 +14,7 @@ build: deps
 	$(GO_BIN) build -v .
 
 test:
+	packr
 	$(GO_BIN) test -tags ${TAGS} ./...
 
 ci-test: deps

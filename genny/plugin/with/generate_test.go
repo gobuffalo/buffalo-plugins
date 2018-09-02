@@ -21,15 +21,15 @@ func Test_GenerateCmd(t *testing.T) {
 
 	run := genny.DryRunner(context.Background())
 
-	g, err := GenerateCmd(opts)
+	gg, err := GenerateCmd(opts)
 	r.NoError(err)
-	run.With(g)
+	run.WithGroup(gg)
 
 	r.NoError(run.Run())
 
 	res := run.Results()
 	r.Len(res.Commands, 0)
-	r.Len(res.Files, 5)
+	r.Len(res.Files, 6)
 
 	f := res.Files[0]
 	r.Equal("cmd/available.go", f.Name())
@@ -45,11 +45,14 @@ func Test_GenerateCmd(t *testing.T) {
 	r.Contains(f.String(), "func New(opts *Options) (*genny.Generator, error)")
 
 	f = res.Files[3]
+	r.Equal("genny/bar/bar_test.go", f.Name())
+
+	f = res.Files[4]
 	r.Equal("genny/bar/options.go", f.Name())
 	r.Contains(f.String(), "package bar")
 	r.Contains(f.String(), "type Options struct {")
 
-	f = res.Files[4]
+	f = res.Files[5]
 	r.Equal("genny/bar/templates/example.txt", f.Name())
 
 }
