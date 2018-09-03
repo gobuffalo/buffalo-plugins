@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -111,17 +112,28 @@ func askBin(ctx context.Context, path string) Commands {
 	commands := Commands{}
 
 	cmd := exec.CommandContext(ctx, path, "available")
-	bb, err := cmd.CombinedOutput()
+	bb := &bytes.Buffer{}
+	cmd.Stdout = bb
+	cmd.Stderr = bb
+	err := cmd.Run()
 	if err != nil {
-		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, string(bb))
+		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, bb.String())
 		return commands
 	}
-	bb = bytes.TrimSpace(bb)
-	err = json.NewDecoder(bytes.NewReader(bb)).Decode(&commands)
-	if err != nil {
-		logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, string(bb))
-		return commands
+	msg := bb.String()
+	for len(msg) > 0 {
+		fmt.Println("### msg ->", msg)
+		err = json.NewDecoder(bb).Decode(&commands)
+		if err == nil {
+			return commands
+		}
+		msg = msg[0:]
+		// if err != nil {
+		// 	logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, bb.String())
+		// 	return commands
+		// }
 	}
+	logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, msg)
 	return commands
 }
 
