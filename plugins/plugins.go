@@ -111,17 +111,14 @@ func askBin(ctx context.Context, path string) Commands {
 	commands := Commands{}
 
 	cmd := exec.CommandContext(ctx, path, "available")
-	bb := &bytes.Buffer{}
-	cmd.Stdout = bb
-	cmd.Stderr = bb
-	err := cmd.Run()
+	bb, err := cmd.CombinedOutput()
 	if err != nil {
-		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, bb.String())
+		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, string(bb))
 		return commands
 	}
-	err = json.NewDecoder(bb).Decode(&commands)
+	err = json.NewDecoder(bytes.NewReader(bb)).Decode(&commands)
 	if err != nil {
-		logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, bb.String())
+		logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, string(bb))
 		return commands
 	}
 	return commands
