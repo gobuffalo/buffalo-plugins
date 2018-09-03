@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -122,16 +121,11 @@ func askBin(ctx context.Context, path string) Commands {
 	}
 	msg := bb.String()
 	for len(msg) > 0 {
-		fmt.Println("### msg ->", msg)
-		err = json.NewDecoder(bb).Decode(&commands)
+		err = json.NewDecoder(strings.NewReader(msg)).Decode(&commands)
 		if err == nil {
 			return commands
 		}
-		msg = msg[0:]
-		// if err != nil {
-		// 	logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, bb.String())
-		// 	return commands
-		// }
+		msg = msg[1:]
 	}
 	logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, msg)
 	return commands
