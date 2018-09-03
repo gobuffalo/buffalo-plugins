@@ -3,7 +3,7 @@ module github.com/gobuffalo/buffalo-plugins
 require (
 	github.com/BurntSushi/toml v0.3.0 // indirect
 	github.com/gobuffalo/envy v1.6.4
-	github.com/gobuffalo/genny v0.0.0-20180902162157-4f1c72891fb1
+	github.com/gobuffalo/genny v0.0.0-20180903175302-8e6ecd7c52ca
 	github.com/gobuffalo/packr v1.13.3
 	github.com/gobuffalo/plush v3.7.16+incompatible
 	github.com/hashicorp/hcl v1.0.0 // indirect
@@ -19,4 +19,5 @@ require (
 	github.com/spf13/jwalterweatherman v0.0.0-20180814060501-14d3d4c51834 // indirect
 	github.com/spf13/viper v1.1.0
 	github.com/stretchr/testify v1.2.2
+	golang.org/x/sys v0.0.0-20180903190138-2b024373dcd9 // indirect
 )

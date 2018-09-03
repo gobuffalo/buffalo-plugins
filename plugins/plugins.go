@@ -121,7 +121,7 @@ func askBin(ctx context.Context, path string) Commands {
 	}
 	err = json.NewDecoder(bb).Decode(&commands)
 	if err != nil {
-		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n", path, err)
+		logrus.Errorf("[PLUGIN] error decoding plugin %s: %s\n%s\n", path, err, bb.String())
 		return commands
 	}
 	return commands
