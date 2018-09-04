@@ -7,6 +7,7 @@ import (
 	"github.com/gobuffalo/genny/movinglater/plushgen"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/plush"
+	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/pkg/errors"
 )
 
@@ -42,5 +43,11 @@ func New(opts *Options) (*genny.Group, error) {
 		return gg, errors.WithStack(err)
 	}
 	gg.Merge(gm)
+
+	g, err = makefile.New(&makefile.Options{Force: true})
+	if err != nil {
+		return gg, errors.WithStack(err)
+	}
+	gg.Add(g)
 	return gg, nil
 }
