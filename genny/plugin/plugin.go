@@ -1,13 +1,15 @@
 package plugin
 
 import (
+	"path/filepath"
+
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/plush"
-	"github.com/gobuffalo/release/genny/makefile"
+	"github.com/gobuffalo/release/genny/initgen"
 	"github.com/pkg/errors"
 )
 
@@ -44,10 +46,15 @@ func New(opts *Options) (*genny.Group, error) {
 	}
 	gg.Merge(gm)
 
-	g, err = makefile.New(&makefile.Options{Force: true})
+	ig, err := initgen.New(&initgen.Options{
+		Version:     "v0.0.1",
+		VersionFile: filepath.Join(opts.ShortName, "version.go"),
+		MainFile:    "main.go",
+	})
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
-	gg.Add(g)
+	gg.Merge(ig)
+
 	return gg, nil
 }

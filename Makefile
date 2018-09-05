@@ -20,12 +20,19 @@ test:
 ci-test: deps
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
-release-test:
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+lint:
+	gometalinter --vendor ./... --deadline=1m --skip=internal
 
 update:
 	$(GO_BIN) get -u
 	$(GO_BIN) mod tidy
 	packr
 	make test
+	make install
 
+release-test:
+	$(GO_BIN) test -tags ${TAGS} -race ./...
+
+release:
+	$(GO_BIN) get github.com/gobuffalo/release
+	release -y -f ./plugins/version.go
