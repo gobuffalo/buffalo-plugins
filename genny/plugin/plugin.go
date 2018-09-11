@@ -5,8 +5,8 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
-	"github.com/gobuffalo/genny/movinglater/licenser"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
+	"github.com/gobuffalo/licenser/genny/licenser"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/release/genny/initgen"

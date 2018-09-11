@@ -29,7 +29,7 @@ func Test_GenerateCmd(t *testing.T) {
 
 	res := run.Results()
 	r.Len(res.Commands, 0)
-	r.Len(res.Files, 6)
+	r.Len(res.Files, 7)
 
 	f := res.Files[0]
 	r.Equal("cmd/available.go", f.Name())
@@ -53,6 +53,9 @@ func Test_GenerateCmd(t *testing.T) {
 	r.Contains(f.String(), "type Options struct {")
 
 	f = res.Files[5]
+	r.Equal("genny/bar/options_test.go", f.Name())
+
+	f = res.Files[6]
 	r.Equal("genny/bar/templates/example.txt", f.Name())
 
 }
