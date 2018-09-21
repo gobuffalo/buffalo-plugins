@@ -30,7 +30,7 @@ func Test_Generator(t *testing.T) {
 	r.NoError(run.Run())
 	res := run.Results()
 	if gomods.On() {
-		r.Len(res.Commands, 2)
+		r.Len(res.Commands, 4)
 
 		c := res.Commands[0]
 		r.Equal("go mod init github.com/foo/buffalo-bar", strings.Join(c.Args, " "))
@@ -41,7 +41,7 @@ func Test_Generator(t *testing.T) {
 		r.Len(res.Commands, 0)
 	}
 
-	r.Len(res.Files, 11)
+	r.Len(res.Files, 12)
 
 	for i, f := range res.Files {
 		if i == 0 {
@@ -52,39 +52,42 @@ func Test_Generator(t *testing.T) {
 		fmt.Printf(`r.Equal("%s", f.Name())`+"\n\n", f.Name())
 	}
 	f := res.Files[0]
-	r.Equal(".goreleaser.yml", f.Name())
+	r.Equal(".gometalinter.json", f.Name())
 
 	f = res.Files[1]
-	r.Equal(".travis.yml", f.Name())
+	r.Equal(".goreleaser.yml", f.Name())
 
 	f = res.Files[2]
-	r.Equal("LICENSE", f.Name())
+	r.Equal(".travis.yml", f.Name())
 
 	f = res.Files[3]
-	r.Equal("Makefile", f.Name())
+	r.Equal("LICENSE", f.Name())
 
 	f = res.Files[4]
+	r.Equal("Makefile", f.Name())
+
+	f = res.Files[5]
 	r.Equal("README.md", f.Name())
 	r.Contains(f.String(), opts.PluginPkg)
 
-	f = res.Files[5]
+	f = res.Files[6]
 	r.Equal("bar/version.go", f.Name())
 
-	f = res.Files[6]
+	f = res.Files[7]
 	r.Equal("cmd/available.go", f.Name())
 
-	f = res.Files[7]
+	f = res.Files[8]
 	r.Equal("cmd/bar.go", f.Name())
 
-	f = res.Files[8]
+	f = res.Files[9]
 	r.Equal("cmd/root.go", f.Name())
 
-	f = res.Files[9]
+	f = res.Files[10]
 	r.Equal("cmd/version.go", f.Name())
 	r.Contains(f.String(), opts.PluginPkg+"/"+opts.ShortName)
 	r.Contains(f.String(), opts.ShortName+".Version")
 
-	f = res.Files[10]
+	f = res.Files[11]
 	r.Equal("main.go", f.Name())
 	r.Contains(f.String(), "github.com/foo/buffalo-bar/cmd")
 
