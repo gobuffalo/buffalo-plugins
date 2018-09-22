@@ -122,7 +122,7 @@ func askBin(ctx context.Context, path string) Commands {
 	cmd.Stderr = bb
 	err := cmd.Run()
 	if err != nil {
-		// logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, bb.String())
+		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, bb.String())
 		return commands
 	}
 	msg := bb.String()
