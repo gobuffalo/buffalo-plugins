@@ -38,7 +38,7 @@ func Test_Generator(t *testing.T) {
 		c = res.Commands[1]
 		r.Equal("go mod tidy", strings.Join(c.Args, " "))
 	} else {
-		r.Len(res.Commands, 0)
+		r.Len(res.Commands, 2)
 	}
 
 	r.Len(res.Files, 12)
