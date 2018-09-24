@@ -34,5 +34,4 @@ release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
 release:
-	$(GO_BIN) get github.com/gobuffalo/release
 	release -y -f ./plugins/version.go
