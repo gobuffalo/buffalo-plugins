@@ -23,5 +23,7 @@ jhw.*
 node_modules/
 dist/
 generated/
+.vendor/
 bin/*
 gin-bin
+.idea/

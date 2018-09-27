@@ -4,7 +4,6 @@ import (
 	"path/filepath"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
 	"github.com/gobuffalo/licenser/genny/licenser"
 	"github.com/gobuffalo/packr"
@@ -39,12 +38,6 @@ func New(opts *Options) (*genny.Group, error) {
 		return gg, errors.WithStack(err)
 	}
 	gg.Add(g)
-
-	gm, err := gomods.New(opts.PluginPkg, opts.Root)
-	if err != nil && errors.Cause(err) != gomods.ErrModsOff {
-		return gg, errors.WithStack(err)
-	}
-	gg.Merge(gm)
 
 	ig, err := initgen.New(&initgen.Options{
 		Version:     "v0.0.1",
