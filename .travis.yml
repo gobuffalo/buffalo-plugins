@@ -10,13 +10,17 @@ matrix:
     env:
       - GO111MODULE=off
   - go: "1.11.x"
+    env:
       - GO111MODULE=on
+  - go: "tip"
+    env:
+      - GO111MODULE=off
+  - go: "tip"
+    env:
+      - GO111MODULE=on
+  allow_failures:
+    - go: "tip"
 
 install: make deps
 
 script: make ci-test
-
-matrix:
-  allow_failures:
-    - go: 'tip'
-
