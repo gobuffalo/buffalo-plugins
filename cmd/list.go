@@ -1,11 +1,11 @@
 package cmd
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
 	"text/tabwriter"
 
 	"github.com/gobuffalo/buffalo-plugins/plugins"
@@ -45,7 +45,7 @@ var listCmd = &cobra.Command{
 			if c.Name == "" {
 				continue
 			}
-			sb := &strings.Builder{}
+			sb := &bytes.Buffer{}
 			sb.WriteString("buffalo ")
 			if c.BuffaloCommand != "root" {
 				sb.WriteString(c.BuffaloCommand)
