@@ -3,7 +3,7 @@ language: go
 sudo: false
 
 ENV:
-  GO111MODULE=on
+  - GO111MODULE=on
 
 go:
   - 1.9.x
