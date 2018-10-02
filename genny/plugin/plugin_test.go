@@ -44,7 +44,7 @@ func Test_Generator(t *testing.T) {
 	files := []string{
 		".gitignore",
 		".gometalinter.json",
-		".goreleaser.yml",
+		".goreleaser.yml.plush",
 		".travis.yml",
 		"LICENSE",
 		"Makefile",
