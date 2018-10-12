@@ -2,7 +2,9 @@ package install
 
 import (
 	"bytes"
+	"go/build"
 	"io"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -26,6 +28,8 @@ func Test_New(t *testing.T) {
 	r.NoError(err)
 
 	run := gentest.NewRunner()
+	c := build.Default
+	run.Disk.Add(genny.NewFile(filepath.Join(c.GOPATH, "bin", "buffalo-pop"), &bytes.Buffer{}))
 	run.FileFn = func(f genny.File) (genny.File, error) {
 		bb := &bytes.Buffer{}
 		if _, err := io.Copy(bb, f); err != nil {
