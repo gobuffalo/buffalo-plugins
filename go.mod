@@ -3,6 +3,7 @@ module github.com/gobuffalo/buffalo-plugins
 require (
 	github.com/gobuffalo/buffalo v0.13.0
 	github.com/gobuffalo/envy v1.6.5
+	github.com/gobuffalo/events v1.0.7
 	github.com/gobuffalo/genny v0.0.0-20181012161047-33e5f43d83a6
 	github.com/gobuffalo/licenser v0.0.0-20180924033006-eae28e638a42
 	github.com/gobuffalo/packr v1.13.7
