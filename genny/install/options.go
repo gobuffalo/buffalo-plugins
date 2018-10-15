@@ -11,6 +11,7 @@ import (
 type Options struct {
 	App     meta.App
 	Plugins []plugdeps.Plugin
+	Vendor  bool
 }
 
 // Validate that options are usuable

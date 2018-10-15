@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"context"
 	"io"
-	"path/filepath"
+	"path"
+	"strings"
 
-	"github.com/BurntSushi/toml"
 	"github.com/gobuffalo/buffalo-plugins/genny/install"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/buffalo/meta"
@@ -17,46 +17,50 @@ import (
 
 var installOptions = struct {
 	dryRun bool
+	vendor bool
 }{}
 
 var installCmd = &cobra.Command{
 	Use:   "install",
-	Short: "installs plugins listed in config/buffalo-plugins.toml to ./plugins/",
+	Short: "installs plugins listed in config/buffalo-plugins.toml",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		run := genny.WetRunner(context.Background())
 		if installOptions.dryRun {
 			run = genny.DryRunner(context.Background())
-			run.FileFn = func(f genny.File) (genny.File, error) {
-				bb := &bytes.Buffer{}
-				if _, err := io.Copy(bb, f); err != nil {
-					return f, errors.WithStack(err)
+			if installOptions.vendor {
+				run.FileFn = func(f genny.File) (genny.File, error) {
+					bb := &bytes.Buffer{}
+					if _, err := io.Copy(bb, f); err != nil {
+						return f, errors.WithStack(err)
+					}
+					return genny.NewFile(f.Name(), bb), nil
 				}
-				return genny.NewFile(f.Name(), bb), nil
 			}
 		}
 
 		app := meta.New(".")
 		plugs, err := plugdeps.List(app)
-		if err != nil {
+		if err != nil && (errors.Cause(err) != plugdeps.ErrMissingConfig) {
 			return errors.WithStack(err)
+		}
+
+		for _, a := range args {
+			a = strings.TrimSpace(a)
+			bin := path.Base(a)
+			plugs.Add(plugdeps.Plugin{
+				Binary: bin,
+				GoGet:  a,
+			})
 		}
 
 		err = run.WithNew(install.New(&install.Options{
 			App:     app,
-			Plugins: plugs.Plugins,
+			Plugins: plugs.List(),
+			Vendor:  installOptions.vendor,
 		}))
 		if err != nil {
 			return errors.WithStack(err)
 		}
-
-		run.WithRun(func(r *genny.Runner) error {
-			bb := &bytes.Buffer{}
-			if err := toml.NewEncoder(bb).Encode(plugs); err != nil {
-				return errors.WithStack(err)
-			}
-			cpath := filepath.Join(app.Root, "config", "buffalo-plugins.toml")
-			return r.File(genny.NewFile(cpath, bb))
-		})
 
 		return run.Run()
 	},
@@ -64,5 +68,6 @@ var installCmd = &cobra.Command{
 
 func init() {
 	installCmd.Flags().BoolVarP(&installOptions.dryRun, "dry-run", "d", false, "dry run")
+	installCmd.Flags().BoolVar(&installOptions.vendor, "vendor", false, "will install plugin binaries into ./plugins [WINDOWS not currently supported]")
 	pluginsCmd.AddCommand(installCmd)
 }

@@ -6,7 +6,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/BurntSushi/toml"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
@@ -22,11 +21,16 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	proot := filepath.Join(opts.App.Root, "plugins")
 	for _, p := range opts.Plugins {
-		g.RunFn(pRun(proot, p))
+		g.RunFn(gotools.Install(p.GoGet))
+		if opts.Vendor {
+			g.RunFn(pRun(proot, p))
+		}
 	}
 
 	bb := &bytes.Buffer{}
-	if err := toml.NewEncoder(bb).Encode(plugdeps.Plugins{Plugins: opts.Plugins}); err != nil {
+	plugs := plugdeps.New()
+	plugs.Add(opts.Plugins...)
+	if err := plugs.Encode(bb); err != nil {
 		return g, errors.WithStack(err)
 	}
 
@@ -38,13 +42,9 @@ func New(opts *Options) (*genny.Generator, error) {
 
 func pRun(proot string, p plugdeps.Plugin) genny.RunFn {
 	return func(r *genny.Runner) error {
-		if err := gotools.Install(p.GoGet)(r); err != nil {
-			return errors.WithStack(err)
-		}
-
 		c := build.Default
 		if c.GOOS == "windows" {
-			p.Binary += ".exe"
+			return errors.New("vendoring of plugins is currently not supported on windows. PRs are VERY welcome! :)")
 		}
 
 		bp := filepath.Join(c.GOPATH, "bin", p.Binary)

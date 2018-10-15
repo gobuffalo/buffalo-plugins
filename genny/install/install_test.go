@@ -50,7 +50,7 @@ func Test_New(t *testing.T) {
 	}
 	r.Len(res.Commands, len(ecmds))
 
-	efiles := []string{"bin/buffalo-pop", "config/buffalo-plugins.toml", "plugins/buffalo-pop"}
+	efiles := []string{"bin/buffalo-pop", "config/buffalo-plugins.toml"}
 	for i, f := range res.Files {
 		r.True(strings.HasSuffix(f.Name(), efiles[i]))
 	}
