@@ -1,9 +1,13 @@
 package cmd
 
 import (
+	"context"
 	"encoding/json"
 
+	"github.com/gobuffalo/buffalo-plugins/genny/install"
+	"github.com/gobuffalo/buffalo-plugins/plugins"
 	"github.com/gobuffalo/events"
+	"github.com/gobuffalo/genny"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
@@ -26,7 +30,22 @@ var listenCmd = &cobra.Command{
 			return nil
 		}
 
-		return installCmd.RunE(cmd, []string{})
+		run := genny.WetRunner(context.Background())
+
+		opts := &install.Options{}
+		err = run.WithNew(install.New(opts))
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		payload := e.Payload
+		payload["plugins"] = opts.Plugins
+		events.EmitPayload(plugins.EvtSetupStarted, payload)
+		if err := run.Run(); err != nil {
+			events.EmitError(plugins.EvtSetupErr, err, payload)
+			return errors.WithStack(err)
+		}
+		events.EmitPayload(plugins.EvtSetupFinished, payload)
+		return nil
 	},
 }
 

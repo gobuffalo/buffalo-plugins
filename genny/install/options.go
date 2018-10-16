@@ -23,5 +23,12 @@ func (opts *Options) Validate() error {
 		}
 		opts.App = meta.New(pwd)
 	}
+	if len(opts.Plugins) == 0 {
+		plugs, err := plugdeps.List(opts.App)
+		if err != nil && (errors.Cause(err) != plugdeps.ErrMissingConfig) {
+			return errors.WithStack(err)
+		}
+		opts.Plugins = plugs.List()
+	}
 	return nil
 }
