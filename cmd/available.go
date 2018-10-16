@@ -21,6 +21,7 @@ var availableCmd = &cobra.Command{
 		plugs := plugins.Commands{
 			{Name: generateCmd.Use, BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases},
 			{Name: pluginsCmd.Use, BuffaloCommand: "root", Description: pluginsCmd.Short, Aliases: pluginsCmd.Aliases},
+			{Name: "listen", UseCommand: "listen", BuffaloCommand: "events", Description: listenCmd.Short, Aliases: listenCmd.Aliases},
 		}
 		return json.NewEncoder(os.Stdout).Encode(plugs)
 	},

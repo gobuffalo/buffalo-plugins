@@ -7,14 +7,35 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"time"
 
+	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
+	"github.com/gobuffalo/buffalo/meta"
 	"github.com/gobuffalo/envy"
+	"github.com/karrick/godirwalk"
 	"github.com/markbates/oncer"
 	"github.com/sirupsen/logrus"
 )
+
+const timeoutEnv = "BUFFALO_PLUGIN_TIMEOUT"
+
+func timeout() time.Duration {
+	t := time.Second
+	oncer.Do("plugins.timeout", func() {
+		rawTimeout, err := envy.MustGet(timeoutEnv)
+		if err == nil {
+			if parsed, err := time.ParseDuration(rawTimeout); err == nil {
+				t = parsed
+			} else {
+				logrus.Errorf("%q value is malformed assuming default %q: %v", timeoutEnv, t, err)
+			}
+		} else {
+			logrus.Debugf("%q not set, assuming default of %v", timeoutEnv, t)
+		}
+	})
+	return t
+}
 
 // List maps a Buffalo command to a slice of Command
 type List map[string]Commands
@@ -42,7 +63,14 @@ var _list List
 func Available() (List, error) {
 	var err error
 	oncer.Do("plugins.Available", func() {
-		list := List{}
+
+		app := meta.New(".")
+
+		if plugdeps.On(app) {
+			_list, err = listPlugDeps(app)
+			return
+		}
+
 		paths := []string{"plugins"}
 
 		from, err := envy.MustGet("BUFFALO_PLUGIN_PATH")
@@ -54,25 +82,9 @@ func Available() (List, error) {
 			from = filepath.Join(from, "bin")
 		}
 
-		const timeoutEnv = "BUFFALO_PLUGIN_TIMEOUT"
-		timeout := time.Second
-		rawTimeout, err := envy.MustGet(timeoutEnv)
-		if err == nil {
-			if parsed, err := time.ParseDuration(rawTimeout); err == nil {
-				timeout = parsed
-			} else {
-				logrus.Errorf("%q value is malformed assuming default %q: %v", timeoutEnv, timeout, err)
-			}
-		} else {
-			logrus.Debugf("%q not set, assuming default of %v", timeoutEnv, timeout)
-		}
+		paths = append(paths, strings.Split(from, string(os.PathListSeparator))...)
 
-		if runtime.GOOS == "windows" {
-			paths = append(paths, strings.Split(from, ";")...)
-		} else {
-			paths = append(paths, strings.Split(from, ":")...)
-		}
-
+		list := List{}
 		for _, p := range paths {
 			if ignorePath(p) {
 				continue
@@ -80,30 +92,35 @@ func Available() (List, error) {
 			if _, err := os.Stat(p); err != nil {
 				continue
 			}
-			err := filepath.Walk(p, func(path string, info os.FileInfo, err error) error {
-				if err != nil {
-					// May indicate a permissions problem with the path, skip it
-					return nil
-				}
-				if info.IsDir() {
-					return nil
-				}
-				base := filepath.Base(path)
-				if strings.HasPrefix(base, "buffalo-") {
-					ctx, cancel := context.WithTimeout(context.Background(), timeout)
-					commands := askBin(ctx, path)
-					cancel()
-					for _, c := range commands {
-						bc := c.BuffaloCommand
-						if _, ok := list[bc]; !ok {
-							list[bc] = Commands{}
-						}
-						c.Binary = path
-						list[bc] = append(list[bc], c)
+
+			err := godirwalk.Walk(p, &godirwalk.Options{
+				FollowSymbolicLinks: true,
+				Callback: func(path string, info *godirwalk.Dirent) error {
+					if err != nil {
+						// May indicate a permissions problem with the path, skip it
+						return nil
 					}
-				}
-				return nil
+					if info.IsDir() {
+						return nil
+					}
+					base := filepath.Base(path)
+					if strings.HasPrefix(base, "buffalo-") {
+						ctx, cancel := context.WithTimeout(context.Background(), timeout())
+						commands := askBin(ctx, path)
+						cancel()
+						for _, c := range commands {
+							bc := c.BuffaloCommand
+							if _, ok := list[bc]; !ok {
+								list[bc] = Commands{}
+							}
+							c.Binary = path
+							list[bc] = append(list[bc], c)
+						}
+					}
+					return nil
+				},
 			})
+
 			if err != nil {
 				return
 			}
@@ -121,7 +138,6 @@ func askBin(ctx context.Context, path string) Commands {
 	cmd.Stdout = bb
 	err := cmd.Run()
 	if err != nil {
-		logrus.Errorf("[PLUGIN] error loading plugin %s: %s\n%s\n", path, err, bb.String())
 		return commands
 	}
 	msg := bb.String()
@@ -144,4 +160,26 @@ func ignorePath(p string) bool {
 		}
 	}
 	return false
+}
+
+func listPlugDeps(app meta.App) (List, error) {
+	list := List{}
+	plugs, err := plugdeps.List(app)
+	if err != nil {
+		return list, err
+	}
+	for _, p := range plugs.List() {
+		ctx, cancel := context.WithTimeout(context.Background(), timeout())
+		commands := askBin(ctx, p.Binary)
+		cancel()
+		for _, c := range commands {
+			bc := c.BuffaloCommand
+			if _, ok := list[bc]; !ok {
+				list[bc] = Commands{}
+			}
+			c.Binary = p.Binary
+			list[bc] = append(list[bc], c)
+		}
+	}
+	return list, nil
 }
