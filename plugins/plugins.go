@@ -170,7 +170,11 @@ func listPlugDeps(app meta.App) (List, error) {
 	}
 	for _, p := range plugs.List() {
 		ctx, cancel := context.WithTimeout(context.Background(), timeout())
-		commands := askBin(ctx, p.Binary)
+		bin := p.Binary
+		if len(p.Local) != 0 {
+			bin = p.Local
+		}
+		commands := askBin(ctx, bin)
 		cancel()
 		for _, c := range commands {
 			bc := c.BuffaloCommand

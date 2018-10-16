@@ -14,7 +14,7 @@ func Test_Plugins_Encode(t *testing.T) {
 	bb := &bytes.Buffer{}
 
 	plugs := New()
-	plugs.Add(pop, heroku)
+	plugs.Add(pop, heroku, local)
 
 	r.NoError(plugs.Encode(bb))
 
@@ -29,7 +29,7 @@ func Test_Plugins_Decode(t *testing.T) {
 	plugs := New()
 	r.NoError(plugs.Decode(strings.NewReader(eToml)))
 
-	names := []string{"buffalo-heroku", "buffalo-pop"}
+	names := []string{"buffalo-hello.rb", "buffalo-heroku", "buffalo-pop"}
 	list := plugs.List()
 
 	r.Len(list, len(names))

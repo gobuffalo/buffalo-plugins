@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"io"
+	"os"
 	"path"
 	"strings"
 
@@ -47,10 +48,15 @@ var installCmd = &cobra.Command{
 		for _, a := range args {
 			a = strings.TrimSpace(a)
 			bin := path.Base(a)
-			plugs.Add(plugdeps.Plugin{
+			plug := plugdeps.Plugin{
 				Binary: bin,
 				GoGet:  a,
-			})
+			}
+			if _, err := os.Stat(a); err == nil {
+				plug.Local = a
+				plug.GoGet = ""
+			}
+			plugs.Add(plug)
 		}
 
 		err = run.WithNew(install.New(&install.Options{
