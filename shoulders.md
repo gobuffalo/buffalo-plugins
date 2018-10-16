@@ -15,13 +15,21 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/buffalo-plugins/cmd](https://godoc.org/github.com/gobuffalo/buffalo-plugins/cmd)
 
+* [github.com/gobuffalo/buffalo-plugins/genny/install](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/install)
+
 * [github.com/gobuffalo/buffalo-plugins/genny/plugin](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/plugin)
 
 * [github.com/gobuffalo/buffalo-plugins/genny/plugin/with](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/plugin/with)
 
 * [github.com/gobuffalo/buffalo-plugins/plugins](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins)
 
+* [github.com/gobuffalo/buffalo-plugins/plugins/plugdeps](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugdeps)
+
+* [github.com/gobuffalo/buffalo/meta](https://godoc.org/github.com/gobuffalo/buffalo/meta)
+
 * [github.com/gobuffalo/envy](https://godoc.org/github.com/gobuffalo/envy)
+
+* [github.com/gobuffalo/events](https://godoc.org/github.com/gobuffalo/events)
 
 * [github.com/gobuffalo/flect](https://godoc.org/github.com/gobuffalo/flect)
 
@@ -46,6 +54,8 @@ Thank you to the following **GIANTS**:
 * [github.com/gobuffalo/github_flavored_markdown/internal/russross/blackfriday](https://godoc.org/github.com/gobuffalo/github_flavored_markdown/internal/russross/blackfriday)
 
 * [github.com/gobuffalo/licenser/genny/licenser](https://godoc.org/github.com/gobuffalo/licenser/genny/licenser)
+
+* [github.com/gobuffalo/mapi](https://godoc.org/github.com/gobuffalo/mapi)
 
 * [github.com/gobuffalo/packr](https://godoc.org/github.com/gobuffalo/packr)
 
@@ -104,6 +114,8 @@ Thank you to the following **GIANTS**:
 * [github.com/hashicorp/hcl/json/token](https://godoc.org/github.com/hashicorp/hcl/json/token)
 
 * [github.com/joho/godotenv](https://godoc.org/github.com/joho/godotenv)
+
+* [github.com/karrick/godirwalk](https://godoc.org/github.com/karrick/godirwalk)
 
 * [github.com/magiconair/properties](https://godoc.org/github.com/magiconair/properties)
 
