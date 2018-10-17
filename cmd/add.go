@@ -1,11 +1,12 @@
 package cmd
 
 import (
-	"bytes"
 	"context"
+	"os"
 	"path"
 	"strings"
 
+	"github.com/gobuffalo/buffalo-plugins/genny/add"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/buffalo/meta"
 	"github.com/gobuffalo/genny"
@@ -13,20 +14,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var removeOptions = struct {
+var addOptions = struct {
 	dryRun bool
-	vendor bool
 }{}
 
-var removeCmd = &cobra.Command{
-	Use:   "remove",
-	Short: "removes plugin from config/buffalo-plugins.toml",
+var addCmd = &cobra.Command{
+	Use:   "add",
+	Short: "adds plugins to config/buffalo-plugins.toml",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) == 0 {
-			return errors.New("you must specify at least one package")
-		}
 		run := genny.WetRunner(context.Background())
-		if removeOptions.dryRun {
+		if addOptions.dryRun {
 			run = genny.DryRunner(context.Background())
 		}
 
@@ -39,29 +36,29 @@ var removeCmd = &cobra.Command{
 		for _, a := range args {
 			a = strings.TrimSpace(a)
 			bin := path.Base(a)
-			plugs.Remove(plugdeps.Plugin{
+			plug := plugdeps.Plugin{
 				Binary: bin,
 				GoGet:  a,
-			})
-		}
-
-		run.WithRun(func(r *genny.Runner) error {
-			p := plugdeps.ConfigPath(app)
-			bb := &bytes.Buffer{}
-			if err := plugs.Encode(bb); err != nil {
-				return errors.WithStack(err)
 			}
-			return r.File(genny.NewFile(p, bb))
+			if _, err := os.Stat(a); err == nil {
+				plug.Local = a
+				plug.GoGet = ""
+			}
+			plugs.Add(plug)
+		}
+		g, err := add.New(&add.Options{
+			App:     app,
+			Plugins: plugs.List(),
 		})
 		if err != nil {
 			return errors.WithStack(err)
 		}
+		run.With(g)
 
 		return run.Run()
 	},
 }
 
 func init() {
-	removeCmd.Flags().BoolVarP(&removeOptions.dryRun, "dry-run", "d", false, "dry run")
-	removeCmd.Flags().BoolVar(&removeOptions.vendor, "vendor", false, "will install plugin binaries into ./plugins [WINDOWS not currently supported]")
+	addCmd.Flags().BoolVarP(&addOptions.dryRun, "dry-run", "d", false, "dry run")
 }
