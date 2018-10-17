@@ -7,7 +7,7 @@ import (
 // <%= opts.ShortName %>Cmd represents the <%= opts.ShortName %> command
 var <%= opts.ShortName %>Cmd = &cobra.Command{
 	Use:   "<%= opts.ShortName %>",
-	Short: "description about this plugin",
+	Short: "tools for working with <%= opts.ShortName %>",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return nil
 	},

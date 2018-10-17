@@ -68,6 +68,9 @@ func (a Available) Commands() []*cobra.Command {
 //	"root" - is the `buffalo` command
 //	"events" - listens for emitted events
 func (a *Available) Add(bufCmd string, cmd *cobra.Command) error {
+	if len(cmd.Aliases) == 0 {
+		cmd.Aliases = []string{}
+	}
 	p := plug{
 		BuffaloCommand: bufCmd,
 		Cmd:            cmd,
