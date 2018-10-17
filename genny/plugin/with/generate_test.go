@@ -1,13 +1,17 @@
 package with
 
 import (
-	"context"
+	"strings"
 	"testing"
 
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin"
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/gentest"
+	"github.com/gobuffalo/packr"
 	"github.com/stretchr/testify/require"
 )
+
+var gBox = packr.NewBox("../../plugin/templates")
 
 func Test_GenerateCmd(t *testing.T) {
 	r := require.New(t)
@@ -19,7 +23,8 @@ func Test_GenerateCmd(t *testing.T) {
 		ShortName: "bar",
 	}
 
-	run := genny.DryRunner(context.Background())
+	run := gentest.NewRunner()
+	run.Disk.Add(genny.NewFile("cmd/available.go", strings.NewReader(availgo)))
 
 	gg, err := GenerateCmd(opts)
 	r.NoError(err)
@@ -33,7 +38,7 @@ func Test_GenerateCmd(t *testing.T) {
 
 	f := res.Files[0]
 	r.Equal("cmd/available.go", f.Name())
-	r.Contains(f.String(), `{Name: generateCmd.Use, BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases}`)
+	r.Contains(f.String(), `Available.Add("generate", generateCmd)`)
 
 	f = res.Files[1]
 	r.Equal("cmd/generate.go", f.Name())
@@ -59,3 +64,22 @@ func Test_GenerateCmd(t *testing.T) {
 	r.Equal("genny/bar/templates/example.txt", f.Name())
 
 }
+
+const availgo = `package cmd
+
+import (
+	"github.com/gobuffalo/buffalo-plugins/plugins/plugcmds"
+	"github.com/spf13/cobra"
+)
+
+var Available = plugcmds.NewAvailable()
+
+var pluginsCmd = &cobra.Command{
+	Use:   "plugins",
+	Short: "tools for working with buffalo plugins",
+}
+
+func init() {
+	Available.Add("root", pluginsCmd)
+	Available.Mount(rootCmd)
+}`

@@ -1,6 +1,9 @@
 package with
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/genny/new"
@@ -27,6 +30,18 @@ func GenerateCmd(opts *plugin.Options) (*genny.Group, error) {
 
 	g.Transformer(genny.Replace("-shortName-", opts.ShortName))
 	g.Transformer(genny.Dot())
+
+	g.RunFn(func(r *genny.Runner) error {
+		f, err := r.FindFile("cmd/available.go")
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		const g = `Available.Add("generate", generateCmd)`
+		const m = `Available.Mount(rootCmd)`
+		body := strings.Replace(f.String(), m, fmt.Sprintf("\t%s\n%s", g, m), 1)
+		return r.File(genny.NewFile(f.Name(), strings.NewReader(body)))
+	})
+
 	gg.Add(g)
 
 	g, err := new.New(&new.Options{
