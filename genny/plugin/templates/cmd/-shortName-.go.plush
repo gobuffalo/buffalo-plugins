@@ -4,9 +4,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// <%= opts.ShortName %>Cmd represents the <%= opts.ShortName %> command
+// <%= opts.ShortName %>Cmd represents the buffalo-<%= opts.ShortName %> command
 var <%= opts.ShortName %>Cmd = &cobra.Command{
-	Use:   "<%= opts.ShortName %>",
+	Use:   "buffalo-<%= opts.ShortName %>",
 	Short: "tools for working with <%= opts.ShortName %>",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return nil
