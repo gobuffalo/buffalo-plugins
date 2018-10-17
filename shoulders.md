@@ -23,6 +23,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/buffalo-plugins/plugins](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins)
 
+* [github.com/gobuffalo/buffalo-plugins/plugins/plugcmds](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugcmds)
+
 * [github.com/gobuffalo/buffalo-plugins/plugins/plugdeps](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugdeps)
 
 * [github.com/gobuffalo/buffalo/meta](https://godoc.org/github.com/gobuffalo/buffalo/meta)
