@@ -15,6 +15,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/buffalo-plugins/cmd](https://godoc.org/github.com/gobuffalo/buffalo-plugins/cmd)
 
+* [github.com/gobuffalo/buffalo-plugins/genny/add](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/add)
+
 * [github.com/gobuffalo/buffalo-plugins/genny/install](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/install)
 
 * [github.com/gobuffalo/buffalo-plugins/genny/plugin](https://godoc.org/github.com/gobuffalo/buffalo-plugins/genny/plugin)
