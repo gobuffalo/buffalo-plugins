@@ -58,7 +58,3 @@ var listCmd = &cobra.Command{
 		return w.Flush()
 	},
 }
-
-func init() {
-	pluginsCmd.AddCommand(listCmd)
-}

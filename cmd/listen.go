@@ -18,10 +18,11 @@ func Listen(e events.Event) error {
 	run := genny.WetRunner(context.Background())
 
 	opts := &install.Options{}
-	err := run.WithNew(install.New(opts))
+	gg, err := install.New(opts)
 	if err != nil {
 		return errors.WithStack(err)
 	}
+	run.WithGroup(gg)
 	payload := e.Payload
 	payload["plugins"] = opts.Plugins
 	events.EmitPayload(plugins.EvtSetupStarted, payload)

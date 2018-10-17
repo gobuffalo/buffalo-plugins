@@ -73,5 +73,4 @@ func init() {
 	generateCmd.Flags().StringP("license", "l", "mit", fmt.Sprintf("choose a license from: [%s]", strings.Join(licenser.Available, ", ")))
 	generateCmd.Flags().StringP("short-name", "s", "", "a 'short' name for the package")
 	viper.BindPFlags(generateCmd.Flags())
-	rootCmd.AddCommand(generateCmd)
 }

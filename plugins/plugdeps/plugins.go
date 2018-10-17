@@ -80,12 +80,19 @@ func (plugs *Plugins) Remove(pp ...Plugin) {
 
 // New returns a configured *Plugins value
 func New() *Plugins {
-	return &Plugins{
+	plugs := &Plugins{
 		plugins: map[string]Plugin{},
 		moot:    &sync.RWMutex{},
 	}
+	plugs.Add(self)
+	return plugs
 }
 
 type tomlPlugins struct {
 	Plugins []Plugin `toml:"plugin"`
+}
+
+var self = Plugin{
+	Binary: "buffalo-plugins",
+	GoGet:  "github.com/gobuffalo/buffalo-plugins",
 }

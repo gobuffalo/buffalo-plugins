@@ -1,24 +1,34 @@
 package install
 
 import (
-	"bytes"
 	"go/build"
 	"os"
 	"path/filepath"
 
+	"github.com/gobuffalo/buffalo-plugins/genny/add"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
 	"github.com/pkg/errors"
 )
 
-func New(opts *Options) (*genny.Generator, error) {
-	g := genny.New()
+func New(opts *Options) (*genny.Group, error) {
+	gg := &genny.Group{}
 
 	if err := opts.Validate(); err != nil {
-		return g, errors.WithStack(err)
+		return gg, errors.WithStack(err)
 	}
 
+	aopts := &add.Options{
+		App:     opts.App,
+		Plugins: opts.Plugins,
+	}
+
+	if err := aopts.Validate(); err != nil {
+		return gg, errors.WithStack(err)
+	}
+
+	g := genny.New()
 	proot := filepath.Join(opts.App.Root, "plugins")
 	for _, p := range opts.Plugins {
 		if len(p.GoGet) == 0 {
@@ -29,18 +39,16 @@ func New(opts *Options) (*genny.Generator, error) {
 			g.RunFn(pRun(proot, p))
 		}
 	}
+	gg.Add(g)
 
-	bb := &bytes.Buffer{}
-	plugs := plugdeps.New()
-	plugs.Add(opts.Plugins...)
-	if err := plugs.Encode(bb); err != nil {
-		return g, errors.WithStack(err)
+	g, err := add.New(aopts)
+	if err != nil {
+		return gg, errors.WithStack(err)
 	}
 
-	cpath := filepath.Join(opts.App.Root, "config", "buffalo-plugins.toml")
-	g.File(genny.NewFile(cpath, bb))
+	gg.Add(g)
 
-	return g, nil
+	return gg, nil
 }
 
 func pRun(proot string, p plugdeps.Plugin) genny.RunFn {

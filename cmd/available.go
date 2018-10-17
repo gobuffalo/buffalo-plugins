@@ -13,6 +13,12 @@ var pluginsCmd = &cobra.Command{
 }
 
 func init() {
+	pluginsCmd.AddCommand(addCmd)
+	pluginsCmd.AddCommand(listCmd)
+	pluginsCmd.AddCommand(generateCmd)
+	pluginsCmd.AddCommand(removeCmd)
+	pluginsCmd.AddCommand(installCmd)
+
 	Available.Add("generate", generateCmd)
 	Available.Add("root", pluginsCmd)
 	Available.Listen(Listen)
