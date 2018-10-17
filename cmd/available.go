@@ -15,5 +15,6 @@ var pluginsCmd = &cobra.Command{
 func init() {
 	Available.Add("generate", generateCmd)
 	Available.Add("root", pluginsCmd)
+	Available.Listen(Listen)
 	Available.Mount(rootCmd)
 }
