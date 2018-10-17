@@ -43,4 +43,4 @@ release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
 release:
-	release -y -f version.go
+	release -y -f ./plugins/version.go
