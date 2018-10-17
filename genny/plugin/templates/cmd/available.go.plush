@@ -1,25 +1,18 @@
 package cmd
 
 import (
-	"encoding/json"
-	"os"
-
-	"github.com/gobuffalo/buffalo-plugins/plugins"
+	"github.com/gobuffalo/buffalo-plugins/plugins/plugcmds"
 	"github.com/spf13/cobra"
 )
 
-// availableCmd represents the available command
-var availableCmd = &cobra.Command{
-	Use:   "available",
-	Short: "a list of available buffalo plugins",
-	RunE: func(cmd *cobra.Command, args []string) error {
-		plugs := plugins.Commands{
-			// {Name: "<%= opts.ShortName %>", UseCommand: "generate", BuffaloCommand: "generate", Description: generateCmd.Short, Aliases: generateCmd.Aliases},
-		}
-		return json.NewEncoder(os.Stdout).Encode(plugs)
-	},
+var Available = plugcmds.NewAvailable()
+
+var pluginsCmd = &cobra.Command{
+	Use:   "plugins",
+	Short: "tools for working with buffalo plugins",
 }
 
 func init() {
-	rootCmd.AddCommand(availableCmd)
+	Available.Add("root", pluginsCmd)
+	Available.Mount(rootCmd)
 }

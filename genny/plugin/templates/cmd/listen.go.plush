@@ -1,0 +1,14 @@
+package cmd
+
+import (
+	"github.com/gobuffalo/events"
+)
+
+// use a function over init to force the action *before*
+// any cmds are mounted to rootCmd
+var _ = func() error {
+	return Available.Listen(func(e events.Event) error {
+		// do work
+		return nil
+	})
+}()

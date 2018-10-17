@@ -33,7 +33,7 @@ func Test_Generator(t *testing.T) {
 	if !gomods.On() {
 		cmds = []string{"git init", "go get github.com/alecthomas/gometalinter", "gometalinter --install"}
 	} else {
-		cmds = []string{"git init", "go mod init", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
+		cmds = []string{"git init", "go mod init github.com/foo/buffalo-bar", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
 	}
 
 	r.Len(res.Commands, len(cmds))
@@ -52,6 +52,7 @@ func Test_Generator(t *testing.T) {
 		"bar/version.go",
 		"cmd/available.go",
 		"cmd/bar.go",
+		"cmd/listen.go",
 		"cmd/root.go",
 		"cmd/version.go",
 		"main.go",
@@ -66,12 +67,12 @@ func Test_Generator(t *testing.T) {
 	r.Equal("README.md", f.Name())
 	r.Contains(f.String(), opts.PluginPkg)
 
-	f = res.Files[11]
+	f = res.Files[12]
 	r.Equal("cmd/version.go", f.Name())
 	r.Contains(f.String(), opts.PluginPkg+"/"+opts.ShortName)
 	r.Contains(f.String(), opts.ShortName+".Version")
 
-	f = res.Files[12]
+	f = res.Files[13]
 	r.Equal("main.go", f.Name())
 	r.Contains(f.String(), "github.com/foo/buffalo-bar/cmd")
 

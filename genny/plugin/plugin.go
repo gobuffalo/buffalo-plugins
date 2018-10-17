@@ -43,6 +43,7 @@ func New(opts *Options) (*genny.Group, error) {
 		Version:     "v0.0.1",
 		VersionFile: filepath.Join(opts.ShortName, "version.go"),
 		MainFile:    "main.go",
+		Root:        opts.Root,
 	})
 	if err != nil {
 		return gg, errors.WithStack(err)
