@@ -15,6 +15,6 @@ var pluginsCmd = &cobra.Command{
 
 func init() {
 	Available.Add("root", pluginsCmd)
-	Available.Listen(pry.Listen)
+	Available.Listen(<%= opts.ShortName %>.Listen)
 	Available.Mount(rootCmd)
 }
