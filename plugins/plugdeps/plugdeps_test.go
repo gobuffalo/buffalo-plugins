@@ -13,6 +13,9 @@ import (
 var heroku = Plugin{
 	Binary: "buffalo-heroku",
 	GoGet:  "github.com/gobuffalo/buffalo-heroku",
+	Commands: []Command{
+		{Name: "deploy", Flags: []string{"-v"}},
+	},
 }
 
 var local = Plugin{
@@ -61,6 +64,10 @@ const eToml = `[[plugin]]
 [[plugin]]
   binary = "buffalo-heroku"
   go_get = "github.com/gobuffalo/buffalo-heroku"
+
+  [[plugin.command]]
+    flags = ["-v"]
+    name = "deploy"
 
 [[plugin]]
   binary = "buffalo-plugins"
