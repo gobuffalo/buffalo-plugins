@@ -23,6 +23,7 @@ func Test_New(t *testing.T) {
 		App: meta.New("."),
 		Plugins: []plugdeps.Plugin{
 			{Binary: "buffalo-pop", GoGet: "github.com/gobuffalo/buffalo-pop"},
+			{Binary: "buffalo-hello.rb", Local: "./plugins/buffalo-hello.rb"},
 		},
 	})
 	r.NoError(err)
@@ -45,14 +46,14 @@ func Test_New(t *testing.T) {
 	res := run.Results()
 
 	ecmds := []string{"go get github.com/gobuffalo/buffalo-pop"}
+	r.Len(res.Commands, len(ecmds))
 	for i, c := range res.Commands {
 		r.Equal(ecmds[i], strings.Join(c.Args, " "))
 	}
-	r.Len(res.Commands, len(ecmds))
 
 	efiles := []string{"bin/buffalo-pop", "config/buffalo-plugins.toml"}
+	r.Len(res.Files, len(efiles))
 	for i, f := range res.Files {
 		r.True(strings.HasSuffix(f.Name(), efiles[i]))
 	}
-	r.Len(res.Files, len(efiles))
 }

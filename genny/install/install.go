@@ -21,6 +21,9 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	proot := filepath.Join(opts.App.Root, "plugins")
 	for _, p := range opts.Plugins {
+		if len(p.GoGet) == 0 {
+			continue
+		}
 		g.RunFn(gotools.Install(p.GoGet))
 		if opts.Vendor {
 			g.RunFn(pRun(proot, p))

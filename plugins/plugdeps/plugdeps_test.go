@@ -15,6 +15,11 @@ var heroku = Plugin{
 	GoGet:  "github.com/gobuffalo/buffalo-heroku",
 }
 
+var local = Plugin{
+	Binary: "buffalo-hello.rb",
+	Local:  "./plugins/buffalo-hello.rb",
+}
+
 func Test_ConfigPath(t *testing.T) {
 	r := require.New(t)
 
@@ -46,10 +51,14 @@ func Test_List_On(t *testing.T) {
 
 	plugs, err := List(app)
 	r.NoError(err)
-	r.Len(plugs.List(), 2)
+	r.Len(plugs.List(), 3)
 }
 
 const eToml = `[[plugin]]
+  binary = "buffalo-hello.rb"
+  local = "./plugins/buffalo-hello.rb"
+
+[[plugin]]
   binary = "buffalo-heroku"
   go_get = "github.com/gobuffalo/buffalo-heroku"
 

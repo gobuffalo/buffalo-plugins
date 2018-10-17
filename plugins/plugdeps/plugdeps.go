@@ -3,8 +3,10 @@ package plugdeps
 import (
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/gobuffalo/buffalo/meta"
+	"github.com/karrick/godirwalk"
 	"github.com/pkg/errors"
 )
 
@@ -20,6 +22,12 @@ func List(app meta.App) (*Plugins, error) {
 		plugs.Add(pop)
 	}
 
+	lp, err := listLocal(app)
+	if err != nil {
+		return plugs, errors.WithStack(err)
+	}
+	plugs.Add(lp.List()...)
+
 	if !On(app) {
 		return plugs, ErrMissingConfig
 	}
@@ -30,6 +38,35 @@ func List(app meta.App) (*Plugins, error) {
 		return plugs, errors.WithStack(err)
 	}
 	if err := plugs.Decode(tf); err != nil {
+		return plugs, errors.WithStack(err)
+	}
+
+	return plugs, nil
+}
+
+func listLocal(app meta.App) (*Plugins, error) {
+	plugs := New()
+	proot := filepath.Join(app.Root, "plugins")
+	if _, err := os.Stat(proot); err != nil {
+		return plugs, nil
+	}
+	err := godirwalk.Walk(proot, &godirwalk.Options{
+		FollowSymbolicLinks: true,
+		Callback: func(path string, info *godirwalk.Dirent) error {
+			if info.IsDir() {
+				return nil
+			}
+			base := filepath.Base(path)
+			if strings.HasPrefix(base, "buffalo-") {
+				plugs.Add(Plugin{
+					Binary: base,
+					Local:  "." + strings.TrimPrefix(path, app.Root),
+				})
+			}
+			return nil
+		},
+	})
+	if err != nil {
 		return plugs, errors.WithStack(err)
 	}
 
