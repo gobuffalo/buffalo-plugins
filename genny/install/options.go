@@ -11,6 +11,7 @@ import (
 type Options struct {
 	App     meta.App
 	Plugins []plugdeps.Plugin
+	Tags    meta.BuildTags
 	Vendor  bool
 }
 
@@ -30,5 +31,11 @@ func (opts *Options) Validate() error {
 		}
 		opts.Plugins = plugs.List()
 	}
+
+	for i, p := range opts.Plugins {
+		p.Tags = opts.App.BuildTags("", append(opts.Tags, p.Tags...)...)
+		opts.Plugins[i] = p
+	}
+
 	return nil
 }

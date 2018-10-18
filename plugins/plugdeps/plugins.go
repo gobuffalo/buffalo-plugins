@@ -47,7 +47,7 @@ func (plugs *Plugins) List() []Plugin {
 	m := map[string]Plugin{}
 	plugs.moot.RLock()
 	for _, p := range plugs.plugins {
-		m[p.String()] = p
+		m[p.key()] = p
 	}
 	plugs.moot.RUnlock()
 	var pp []Plugin
@@ -64,7 +64,7 @@ func (plugs *Plugins) List() []Plugin {
 func (plugs *Plugins) Add(pp ...Plugin) {
 	plugs.moot.Lock()
 	for _, p := range pp {
-		plugs.plugins[p.String()] = p
+		plugs.plugins[p.key()] = p
 	}
 	plugs.moot.Unlock()
 }
@@ -73,7 +73,7 @@ func (plugs *Plugins) Add(pp ...Plugin) {
 func (plugs *Plugins) Remove(pp ...Plugin) {
 	plugs.moot.Lock()
 	for _, p := range pp {
-		delete(plugs.plugins, p.String())
+		delete(plugs.plugins, p.key())
 	}
 	plugs.moot.Unlock()
 }

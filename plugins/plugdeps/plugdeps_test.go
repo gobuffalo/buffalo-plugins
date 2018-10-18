@@ -13,6 +13,7 @@ import (
 var heroku = Plugin{
 	Binary: "buffalo-heroku",
 	GoGet:  "github.com/gobuffalo/buffalo-heroku",
+	Tags:   []string{"foo", "bar"},
 }
 
 var local = Plugin{
@@ -61,6 +62,7 @@ const eToml = `[[plugin]]
 [[plugin]]
   binary = "buffalo-heroku"
   go_get = "github.com/gobuffalo/buffalo-heroku"
+  tags = ["foo","bar"]
 
 [[plugin]]
   binary = "buffalo-plugins"
@@ -68,4 +70,5 @@ const eToml = `[[plugin]]
 
 [[plugin]]
   binary = "buffalo-pop"
-  go_get = "github.com/gobuffalo/buffalo-pop"`
+  go_get = "github.com/gobuffalo/buffalo-pop"
+`

@@ -22,7 +22,7 @@ func Test_New(t *testing.T) {
 	g, err := New(&Options{
 		App: meta.New("."),
 		Plugins: []plugdeps.Plugin{
-			{Binary: "buffalo-pop", GoGet: "github.com/gobuffalo/buffalo-pop"},
+			{Binary: "buffalo-pop", GoGet: "github.com/gobuffalo/buffalo-pop", Tags: meta.BuildTags{"sqlite"}},
 			{Binary: "buffalo-hello.rb", Local: "./plugins/buffalo-hello.rb"},
 		},
 	})
@@ -45,7 +45,7 @@ func Test_New(t *testing.T) {
 
 	res := run.Results()
 
-	ecmds := []string{"go get github.com/gobuffalo/buffalo-pop"}
+	ecmds := []string{"go get -tags sqlite  github.com/gobuffalo/buffalo-pop"}
 	r.Len(res.Commands, len(ecmds))
 	for i, c := range res.Commands {
 		r.Equal(ecmds[i], strings.Join(c.Args, " "))

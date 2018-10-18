@@ -34,7 +34,7 @@ func New(opts *Options) (*genny.Group, error) {
 		if len(p.GoGet) == 0 {
 			continue
 		}
-		g.RunFn(gotools.Install(p.GoGet))
+		g.RunFn(gotools.Install(p.GoGet, "-tags", p.Tags.String()))
 		if opts.Vendor {
 			g.RunFn(pRun(proot, p))
 		}
