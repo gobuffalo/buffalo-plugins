@@ -11,7 +11,7 @@ require (
 	github.com/gobuffalo/release v1.0.42
 	github.com/gobuffalo/uuid v2.0.4+incompatible // indirect
 	github.com/gofrs/uuid v3.1.0+incompatible // indirect
-	github.com/karrick/godirwalk v1.7.3
+	github.com/karrick/godirwalk v1.7.5
 	github.com/markbates/going v1.0.2
 	github.com/markbates/oncer v0.0.0-20181014194634-05fccaae8fc4
 	github.com/pelletier/go-toml v1.2.0
@@ -21,5 +21,5 @@ require (
 	github.com/spf13/viper v1.2.1
 	github.com/stretchr/testify v1.2.2
 	golang.org/x/net v0.0.0-20181017193950-04a2e542c03f // indirect
-	golang.org/x/tools v0.0.0-20181017210527-4a1b41eed170 // indirect
+	golang.org/x/tools v0.0.0-20181017214349-06f26fdaaa28 // indirect
 )
