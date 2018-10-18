@@ -29,8 +29,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/buffalo-plugins/plugins/plugdeps](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugdeps)
 
-* [github.com/gobuffalo/buffalo/meta](https://godoc.org/github.com/gobuffalo/buffalo/meta)
-
 * [github.com/gobuffalo/envy](https://godoc.org/github.com/gobuffalo/envy)
 
 * [github.com/gobuffalo/events](https://godoc.org/github.com/gobuffalo/events)
@@ -60,6 +58,8 @@ Thank you to the following **GIANTS**:
 * [github.com/gobuffalo/licenser/genny/licenser](https://godoc.org/github.com/gobuffalo/licenser/genny/licenser)
 
 * [github.com/gobuffalo/mapi](https://godoc.org/github.com/gobuffalo/mapi)
+
+* [github.com/gobuffalo/meta](https://godoc.org/github.com/gobuffalo/meta)
 
 * [github.com/gobuffalo/packr](https://godoc.org/github.com/gobuffalo/packr)
 
