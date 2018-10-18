@@ -42,8 +42,6 @@ github.com/gobuffalo/genny v0.0.0-20181005145118-318a41a134cc/go.mod h1:WAd8HmjM
 github.com/gobuffalo/genny v0.0.0-20181007153042-b8de7d566757/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
 github.com/gobuffalo/genny v0.0.0-20181012161047-33e5f43d83a6 h1:zwOcFHdMbna9U85wdM0NMT+r2c98EDKwjIjZVwSwdVU=
 github.com/gobuffalo/genny v0.0.0-20181012161047-33e5f43d83a6/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
-github.com/gobuffalo/genny v0.0.0-20181017142616-0ee1b753300e h1:WjBJKSGXndtuzGTzcob3ipiEZPkk+EeJI1r5ko0Ykn4=
-github.com/gobuffalo/genny v0.0.0-20181017142616-0ee1b753300e/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
 github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246 h1:ap17NHnOCqCKBCeW7deVKkGFZcm7/Lro6uqdlvTXN2k=
 github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
 github.com/gobuffalo/github_flavored_markdown v1.0.4/go.mod h1:uRowCdK+q8d/RF0Kt3/DSalaIXbb0De/dmTqMQdkQ4I=
@@ -73,8 +71,8 @@ github.com/gobuffalo/pop v4.8.3+incompatible/go.mod h1:DwBz3SD5SsHpTZiTubcsFWcVD
 github.com/gobuffalo/pop v4.8.4+incompatible/go.mod h1:DwBz3SD5SsHpTZiTubcsFWcVDpJWGsxjVjMPnkiThWg=
 github.com/gobuffalo/release v1.0.35/go.mod h1:VtHFAKs61vO3wboCec5xr9JPTjYyWYcvaM3lclkc4x4=
 github.com/gobuffalo/release v1.0.38/go.mod h1:VtHFAKs61vO3wboCec5xr9JPTjYyWYcvaM3lclkc4x4=
-github.com/gobuffalo/release v1.0.41 h1:6tPEFaV8GzBWbXR5poKt7Pptq61PviljDg6G/h/oi9k=
-github.com/gobuffalo/release v1.0.41/go.mod h1:hYlf+56ZWkkoUtYRVGjNz8tKNkQey7H09LYBShqSjco=
+github.com/gobuffalo/release v1.0.42 h1:SXsKOFACbHflPQJaa5zn5EB3muyLt7ty6+7J5Y7UQsQ=
+github.com/gobuffalo/release v1.0.42/go.mod h1:RPs7EtafH4oylgetOJpGP0yCZZUiO4vqHfTHJjSdpug=
 github.com/gobuffalo/shoulders v1.0.1 h1:BqVJBUXlBWAf+WLhXijVk3SCpp75LXrVBiIkOCzZbNc=
 github.com/gobuffalo/shoulders v1.0.1/go.mod h1:V33CcVmaQ4gRUmHKwq1fiTXuf8Gp/qjQBUL5tHPmvbA=
 github.com/gobuffalo/tags v2.0.11+incompatible h1:zLkaontB8lWefU+DX38mzPLRKFGTJL8FKb9JnKMt0Z0=
@@ -220,6 +218,8 @@ golang.org/x/net v0.0.0-20180926154720-4dfa2610cdf3/go.mod h1:mL1N/T3taQHkDXs73r
 golang.org/x/net v0.0.0-20181005035420-146acd28ed58/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/net v0.0.0-20181011144130-49bb7cea24b1 h1:Y/KGZSOdz/2r0WJ9Mkmz6NJBusp0kiNx1Cn82lzJQ6w=
 golang.org/x/net v0.0.0-20181011144130-49bb7cea24b1/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
+golang.org/x/net v0.0.0-20181017193950-04a2e542c03f h1:4pRM7zYwpBjCnfA1jRmhItLxYJkaEnsmuAcRtA347DA=
+golang.org/x/net v0.0.0-20181017193950-04a2e542c03f/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f h1:wMNYb4v58l5UBM7MYRLPG6ZhfOqbKu7X5eyFl8ZhKvA=
 golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sys v0.0.0-20180816055513-1c9583448a9c/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
@@ -239,8 +239,8 @@ golang.org/x/tools v0.0.0-20181006002542-f60d9635b16a/go.mod h1:n7NCudcB/nEzxVGm
 golang.org/x/tools v0.0.0-20181008205924-a2b3f7f249e9/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 golang.org/x/tools v0.0.0-20181013182035-5e66757b835f h1:rUshVq0fjlLKvS31sAnzn67e24mRMUwhCcG4tg/Opvs=
 golang.org/x/tools v0.0.0-20181013182035-5e66757b835f/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
-golang.org/x/tools v0.0.0-20181017151246-e94054f4104a h1:e5hO6G35mxoKlyZkhHsjnNYgMkuDjWNZ1X9QUorPKgI=
-golang.org/x/tools v0.0.0-20181017151246-e94054f4104a/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
+golang.org/x/tools v0.0.0-20181017210527-4a1b41eed170 h1:07WTS6SeQ2QesUZJOjpqkbthgdMbhSQOJns5fL6s8zU=
+golang.org/x/tools v0.0.0-20181017210527-4a1b41eed170/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 google.golang.org/appengine v1.2.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
 gopkg.in/airbrake/gobrake.v2 v2.0.9/go.mod h1:/h5ZAUhDkGaJfjzjKLSjv6zCL6O0LLBxU4K+aSYdM/U=
 gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc/go.mod h1:m7x9LTH6d71AHyAX77c9yqWCCa3UKHcVEj9y7hAtKDk=
