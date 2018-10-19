@@ -5,7 +5,7 @@ import (
 	"sort"
 	"sync"
 
-	toml "github.com/pelletier/go-toml"
+	"github.com/BurntSushi/toml"
 	"github.com/pkg/errors"
 )
 
@@ -33,7 +33,7 @@ func (plugs *Plugins) Decode(r io.Reader) error {
 	tp := &tomlPlugins{
 		Plugins: []Plugin{},
 	}
-	if err := toml.NewDecoder(r).Decode(tp); err != nil {
+	if _, err := toml.DecodeReader(r, tp); err != nil {
 		return errors.WithStack(err)
 	}
 	for _, p := range tp.Plugins {

@@ -62,7 +62,7 @@ const eToml = `[[plugin]]
 [[plugin]]
   binary = "buffalo-heroku"
   go_get = "github.com/gobuffalo/buffalo-heroku"
-  tags = ["foo","bar"]
+  tags = ["foo", "bar"]
 
 [[plugin]]
   binary = "buffalo-plugins"
