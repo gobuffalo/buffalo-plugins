@@ -45,7 +45,7 @@ func Test_New(t *testing.T) {
 
 	res := run.Results()
 
-	ecmds := []string{"go get -tags sqlite  github.com/gobuffalo/buffalo-pop"}
+	ecmds := []string{"go get -tags sqlite github.com/gobuffalo/buffalo-pop"}
 	r.Len(res.Commands, len(ecmds))
 	for i, c := range res.Commands {
 		r.Equal(ecmds[i], strings.Join(c.Args, " "))
