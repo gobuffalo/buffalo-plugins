@@ -5,6 +5,8 @@ github.com/gobuffalo/buffalo-plugins does not try to reinvent the wheel! Instead
 Thank you to the following **GIANTS**:
 
 
+* [github.com/BurntSushi/toml](https://godoc.org/github.com/BurntSushi/toml)
+
 * [github.com/Masterminds/semver](https://godoc.org/github.com/Masterminds/semver)
 
 * [github.com/fatih/structs](https://godoc.org/github.com/fatih/structs)
@@ -132,6 +134,8 @@ Thank you to the following **GIANTS**:
 * [github.com/markbates/inflect](https://godoc.org/github.com/markbates/inflect)
 
 * [github.com/markbates/oncer](https://godoc.org/github.com/markbates/oncer)
+
+* [github.com/markbates/safe](https://godoc.org/github.com/markbates/safe)
 
 * [github.com/microcosm-cc/bluemonday](https://godoc.org/github.com/microcosm-cc/bluemonday)
 

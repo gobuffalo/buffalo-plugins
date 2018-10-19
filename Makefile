@@ -51,5 +51,5 @@ release-test:
 
 release:
 	make tidy
-	release -y ./plugins/version.go
+	release -y -f ./plugins/version.go
 	make tidy
