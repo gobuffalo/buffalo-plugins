@@ -59,6 +59,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/licenser/genny/licenser](https://godoc.org/github.com/gobuffalo/licenser/genny/licenser)
 
+* [github.com/gobuffalo/logger](https://godoc.org/github.com/gobuffalo/logger)
+
 * [github.com/gobuffalo/mapi](https://godoc.org/github.com/gobuffalo/mapi)
 
 * [github.com/gobuffalo/meta](https://godoc.org/github.com/gobuffalo/meta)
