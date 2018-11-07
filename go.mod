@@ -9,7 +9,7 @@ require (
 	github.com/gobuffalo/meta v0.0.0-20181025145500-3a985a084b0a
 	github.com/gobuffalo/packr v1.19.0
 	github.com/gobuffalo/plush v3.7.22+incompatible
-	github.com/gobuffalo/release v1.0.60
+	github.com/gobuffalo/release v1.0.61
 	github.com/karrick/godirwalk v1.7.5
 	github.com/markbates/going v1.0.2
 	github.com/markbates/oncer v0.0.0-20181014194634-05fccaae8fc4
