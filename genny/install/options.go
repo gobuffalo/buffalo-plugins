@@ -4,19 +4,20 @@ import (
 	"os"
 
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
-	"github.com/gobuffalo/buffalo/meta"
+	"github.com/gobuffalo/meta"
 	"github.com/pkg/errors"
 )
 
 type Options struct {
 	App     meta.App
 	Plugins []plugdeps.Plugin
+	Tags    meta.BuildTags
 	Vendor  bool
 }
 
 // Validate that options are usuable
 func (opts *Options) Validate() error {
-	if (opts.App == meta.App{}) {
+	if opts.App.IsZero() {
 		pwd, err := os.Getwd()
 		if err != nil {
 			return errors.WithStack(err)
@@ -30,5 +31,11 @@ func (opts *Options) Validate() error {
 		}
 		opts.Plugins = plugs.List()
 	}
+
+	for i, p := range opts.Plugins {
+		p.Tags = opts.App.BuildTags("", append(opts.Tags, p.Tags...)...)
+		opts.Plugins[i] = p
+	}
+
 	return nil
 }

@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
-	"github.com/gobuffalo/buffalo/meta"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/gentest"
+	"github.com/gobuffalo/meta"
 	"github.com/stretchr/testify/require"
 )
 

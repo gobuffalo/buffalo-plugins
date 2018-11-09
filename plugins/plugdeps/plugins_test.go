@@ -2,6 +2,7 @@ package plugdeps
 
 import (
 	"bytes"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -18,6 +19,7 @@ func Test_Plugins_Encode(t *testing.T) {
 
 	r.NoError(plugs.Encode(bb))
 
+	fmt.Println(bb.String())
 	act := strings.TrimSpace(bb.String())
 	exp := strings.TrimSpace(eToml)
 	r.Equal(exp, act)

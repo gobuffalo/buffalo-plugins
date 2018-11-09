@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
-	"github.com/gobuffalo/buffalo/meta"
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/meta"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )

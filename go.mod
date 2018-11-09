@@ -1,25 +1,26 @@
 module github.com/gobuffalo/buffalo-plugins
 
 require (
-	github.com/gobuffalo/buffalo v0.13.0
-	github.com/gobuffalo/envy v1.6.5
-	github.com/gobuffalo/events v1.0.7
-	github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246
-	github.com/gobuffalo/licenser v0.0.0-20180924033006-eae28e638a42
-	github.com/gobuffalo/packr v1.13.7
-	github.com/gobuffalo/plush v3.7.20+incompatible
-	github.com/gobuffalo/release v1.0.42
-	github.com/gobuffalo/uuid v2.0.4+incompatible // indirect
-	github.com/gofrs/uuid v3.1.0+incompatible // indirect
-	github.com/karrick/godirwalk v1.7.3
+	github.com/BurntSushi/toml v0.3.1
+	github.com/gobuffalo/envy v1.6.7
+	github.com/gobuffalo/events v1.1.5
+	github.com/gobuffalo/genny v0.0.0-20181107223128-f18346459dbe
+	github.com/gobuffalo/licenser v0.0.0-20181027200154-58051a75da95
+	github.com/gobuffalo/meta v0.0.0-20181109154556-f76929ccd5fa
+	github.com/gobuffalo/packr v1.19.0
+	github.com/gobuffalo/plush v3.7.22+incompatible
+	github.com/gobuffalo/release v1.0.61
+	github.com/karrick/godirwalk v1.7.5
 	github.com/markbates/going v1.0.2
 	github.com/markbates/oncer v0.0.0-20181014194634-05fccaae8fc4
-	github.com/pelletier/go-toml v1.2.0
+	github.com/mitchellh/mapstructure v1.1.2 // indirect
 	github.com/pkg/errors v0.8.0
-	github.com/sirupsen/logrus v1.1.1
+	github.com/sirupsen/logrus v1.2.0
+	github.com/spf13/cast v1.3.0 // indirect
 	github.com/spf13/cobra v0.0.3
 	github.com/spf13/viper v1.2.1
 	github.com/stretchr/testify v1.2.2
-	golang.org/x/net v0.0.0-20181017193950-04a2e542c03f // indirect
-	golang.org/x/tools v0.0.0-20181017210527-4a1b41eed170 // indirect
+	golang.org/x/crypto v0.0.0-20181106171534-e4dc69e5b2fd // indirect
+	golang.org/x/net v0.0.0-20181106065722-10aee1819953 // indirect
+	golang.org/x/sys v0.0.0-20181106135930-3a76605856fd // indirect
 )

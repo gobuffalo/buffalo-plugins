@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/gobuffalo/buffalo/meta"
+	"github.com/gobuffalo/meta"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 )
@@ -16,6 +16,7 @@ var heroku = Plugin{
 	Commands: []Command{
 		{Name: "deploy", Flags: []string{"-v"}},
 	},
+	Tags: []string{"foo", "bar"},
 }
 
 var local = Plugin{
@@ -64,10 +65,11 @@ const eToml = `[[plugin]]
 [[plugin]]
   binary = "buffalo-heroku"
   go_get = "github.com/gobuffalo/buffalo-heroku"
+  tags = ["foo", "bar"]
 
   [[plugin.command]]
-    flags = ["-v"]
     name = "deploy"
+    flags = ["-v"]
 
 [[plugin]]
   binary = "buffalo-plugins"
@@ -75,4 +77,5 @@ const eToml = `[[plugin]]
 
 [[plugin]]
   binary = "buffalo-pop"
-  go_get = "github.com/gobuffalo/buffalo-pop"`
+  go_get = "github.com/gobuffalo/buffalo-pop"
+`
