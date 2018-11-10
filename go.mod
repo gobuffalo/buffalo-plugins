@@ -4,12 +4,12 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/gobuffalo/envy v1.6.8
 	github.com/gobuffalo/events v1.1.6
-	github.com/gobuffalo/genny v0.0.0-20181110160000-91f6b1c43e25
+	github.com/gobuffalo/genny v0.0.0-20181110202416-7b7d8756a9e2
 	github.com/gobuffalo/licenser v0.0.0-20181109171355-91a2a7aac9a7
 	github.com/gobuffalo/meta v0.0.0-20181109154556-f76929ccd5fa
 	github.com/gobuffalo/packr v1.19.0
 	github.com/gobuffalo/plush v3.7.22+incompatible
-	github.com/gobuffalo/release v1.0.61
+	github.com/gobuffalo/release v1.0.62
 	github.com/karrick/godirwalk v1.7.5
 	github.com/markbates/deplist v1.0.5 // indirect
 	github.com/markbates/going v1.0.2
