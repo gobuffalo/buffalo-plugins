@@ -3,7 +3,7 @@ module github.com/gobuffalo/buffalo-plugins
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/gobuffalo/envy v1.6.8
-	github.com/gobuffalo/events v1.1.6
+	github.com/gobuffalo/events v1.1.7
 	github.com/gobuffalo/genny v0.0.0-20181110202416-7b7d8756a9e2
 	github.com/gobuffalo/licenser v0.0.0-20181109171355-91a2a7aac9a7
 	github.com/gobuffalo/meta v0.0.0-20181109154556-f76929ccd5fa
