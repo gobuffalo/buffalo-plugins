@@ -12,6 +12,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
 	"github.com/gobuffalo/licenser/genny/licenser"
+	"github.com/gobuffalo/logger"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -61,12 +62,16 @@ var generateCmd = &cobra.Command{
 		}
 		r.With(g)
 
+		if viper.GetBool("verbose") {
+			r.Logger = logger.New(logger.DebugLevel)
+		}
 		return r.Run()
 	},
 }
 
 func init() {
 	generateCmd.Flags().BoolP("dry-run", "d", false, "run the generator without creating files or running commands")
+	generateCmd.Flags().BoolP("verbose", "v", false, "turn on verbose logging")
 	generateCmd.Flags().Bool("with-gen", false, "creates a generator plugin")
 	generateCmd.Flags().BoolP("force", "f", false, "will delete the target directory if it exists")
 	generateCmd.Flags().StringP("author", "a", "", "author's name")

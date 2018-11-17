@@ -6,7 +6,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
 	"github.com/gobuffalo/licenser/genny/licenser"
-	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/release/genny/initgen"
 	"github.com/pkg/errors"
@@ -20,7 +20,7 @@ func New(opts *Options) (*genny.Group, error) {
 	}
 
 	g := genny.New()
-	g.Box(packr.NewBox("../plugin/templates"))
+	g.Box(packr.New("buffalo-plugins:genny:plugin", "../plugin/templates"))
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
