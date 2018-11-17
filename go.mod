@@ -6,6 +6,7 @@ require (
 	github.com/gobuffalo/events v1.1.8
 	github.com/gobuffalo/genny v0.0.0-20181117204516-3d4f1ae84c6e
 	github.com/gobuffalo/licenser v0.0.0-20181116224424-1b7fd3f9cbb4
+	github.com/gobuffalo/logger v0.0.0-20181117211126-8e9b89b7c264
 	github.com/gobuffalo/meta v0.0.0-20181116202903-8850e47774f5
 	github.com/gobuffalo/packr v1.21.0
 	github.com/gobuffalo/plush v3.7.22+incompatible

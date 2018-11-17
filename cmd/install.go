@@ -11,14 +11,16 @@ import (
 	"github.com/gobuffalo/buffalo-plugins/genny/install"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/logger"
 	"github.com/gobuffalo/meta"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
 var installOptions = struct {
-	dryRun bool
-	vendor bool
+	dryRun  bool
+	vendor  bool
+	verbose bool
 }{}
 
 var installCmd = &cobra.Command{
@@ -68,11 +70,16 @@ var installCmd = &cobra.Command{
 		}
 		run.WithGroup(gg)
 
+		if installOptions.verbose {
+			run.Logger = logger.New(logger.DebugLevel)
+		}
+
 		return run.Run()
 	},
 }
 
 func init() {
 	installCmd.Flags().BoolVarP(&installOptions.dryRun, "dry-run", "d", false, "dry run")
+	installCmd.Flags().BoolVarP(&installOptions.verbose, "verbose", "v", false, "turn on verbose logging")
 	installCmd.Flags().BoolVar(&installOptions.vendor, "vendor", false, "will install plugin binaries into ./plugins [WINDOWS not currently supported]")
 }

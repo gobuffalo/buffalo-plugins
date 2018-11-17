@@ -2,6 +2,7 @@ package plugin
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"strings"
 	"testing"
@@ -57,11 +58,12 @@ func Test_Generator(t *testing.T) {
 		"cmd/version.go",
 		"main.go",
 	}
-	r.Len(res.Files, len(files))
 
 	for i, f := range res.Files {
+		fmt.Println("### f.Name() ->", f.Name())
 		r.Equal(files[i], f.Name())
 	}
+	r.Len(res.Files, len(files))
 
 	f := res.Files[6]
 	r.Equal("README.md", f.Name())
