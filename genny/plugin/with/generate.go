@@ -8,7 +8,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/genny/new"
 	"github.com/gobuffalo/genny/movinglater/plushgen"
-	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/plush"
 	"github.com/pkg/errors"
 )
@@ -20,7 +20,7 @@ func GenerateCmd(opts *plugin.Options) (*genny.Group, error) {
 	}
 
 	g := genny.New()
-	box := packr.NewBox("./generate/templates")
+	box := packr.New("./generate/templates", "./generate/templates")
 	if err := g.Box(box); err != nil {
 		return gg, errors.WithStack(err)
 	}
