@@ -24,7 +24,7 @@ func New(opts *Options) (*genny.Group, error) {
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
-	g.Transformer(genny.Replace("-shortname-", opts.ShortName))
+	g.Transformer(genny.Replace("-short-", opts.ShortName))
 	g.Transformer(genny.Dot())
 	gg.Add(g)
 
