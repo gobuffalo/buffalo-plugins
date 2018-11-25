@@ -20,8 +20,9 @@ import (
 
 const timeoutEnv = "BUFFALO_PLUGIN_TIMEOUT"
 
+var t = time.Second * 2
+
 func timeout() time.Duration {
-	t := time.Second
 	oncer.Do("plugins.timeout", func() {
 		rawTimeout, err := envy.MustGet(timeoutEnv)
 		if err == nil {
@@ -131,6 +132,10 @@ func Available() (List, error) {
 }
 
 func askBin(ctx context.Context, path string) Commands {
+	start := time.Now()
+	defer func() {
+		logrus.Debugf("askBin %s=%.4f s", path, time.Since(start).Seconds())
+	}()
 	commands := Commands{}
 
 	cmd := exec.CommandContext(ctx, path, "available")

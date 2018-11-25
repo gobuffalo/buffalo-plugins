@@ -56,7 +56,6 @@ func Test_Generator(t *testing.T) {
 		"cmd/root.go",
 		"cmd/version.go",
 		"main.go",
-		"readme.md",
 	}
 
 	for i, f := range res.Files {
