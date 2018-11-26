@@ -93,7 +93,7 @@ func (a *Available) Add(bufCmd string, cmd *cobra.Command) error {
 // approach for using Available.
 //	a.Mount(rootCmd)
 func (a Available) Mount(cmd *cobra.Command) {
-	// mount all the cmds on to the cobra comman
+	// mount all the cmds on to the cobra command
 	cmd.AddCommand(a.Cmd())
 	a.moot.RLock()
 	for _, p := range a.plugs {
@@ -114,7 +114,7 @@ func (a *Available) Encode(w io.Writer) error {
 	return json.NewEncoder(w).Encode(plugs)
 }
 
-// Adds a Listen command for github.com/gobuffalo/events.
+// Listen adds a command for github.com/gobuffalo/events.
 func (a *Available) Listen(fn func(e events.Event) error) error {
 	listenCmd := &cobra.Command{
 		Use:   "listen",
