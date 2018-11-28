@@ -3,6 +3,7 @@ package plugin
 import (
 	"context"
 	"os"
+	"sort"
 	"strings"
 	"testing"
 
@@ -57,6 +58,7 @@ func Test_Generator(t *testing.T) {
 		"cmd/version.go",
 		"main.go",
 	}
+	sort.Strings(files)
 
 	for i, f := range res.Files {
 		r.Equal(files[i], f.Name())

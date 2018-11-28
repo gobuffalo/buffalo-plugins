@@ -72,7 +72,16 @@ var _ = func() error {
 	}()
 
 	func() {
-		b := packr.New("genny:licenser", "../licenser/templates")
+		b := packr.New("genny:genny:new", "../new/templates")
+		b.SetResolver("-name-/-name-.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "bb890f3a8aa56c497012afb45b9738ad"})
+		b.SetResolver("-name-/-name-_test.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "be63988dd6aff95c2a1ff130f81faee9"})
+		b.SetResolver("-name-/options.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "56a843f683c28af8d3acb35582da637c"})
+		b.SetResolver("-name-/options_test.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "91ab460f060e204b86863ca1392680ef"})
+		b.SetResolver("-name-/templates/example.txt.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "67c2b59c8741c3fe3f9db52e4e4a72ed"})
+	}()
+
+	func() {
+		b := packr.New("licenser:genny:licenser", "../licenser/templates")
 		b.SetResolver("agpl", packr.Pointer{ForwardBox: gk, ForwardPath: "38ff45a61f79481d5d34d8d9f9676c34"})
 		b.SetResolver("apache", packr.Pointer{ForwardBox: gk, ForwardPath: "0e36ab770b1ec79ef2649ec1552c94dc"})
 		b.SetResolver("artistic", packr.Pointer{ForwardBox: gk, ForwardPath: "e2a24d2b173d9a2c5c7d11e6a6f6630d"})
@@ -89,15 +98,6 @@ var _ = func() error {
 		b.SetResolver("mozilla", packr.Pointer{ForwardBox: gk, ForwardPath: "1614cda23f5488b474a44a2db5ecebac"})
 		b.SetResolver("no-license", packr.Pointer{ForwardBox: gk, ForwardPath: "67f2f65efc608bfd2ec3bb8485e627b4"})
 		b.SetResolver("unlicense", packr.Pointer{ForwardBox: gk, ForwardPath: "11ccb6bedd3e318a1604672830b46c94"})
-	}()
-
-	func() {
-		b := packr.New("genny:new", "../new/templates")
-		b.SetResolver("-name-/-name-.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "bb890f3a8aa56c497012afb45b9738ad"})
-		b.SetResolver("-name-/-name-_test.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "be63988dd6aff95c2a1ff130f81faee9"})
-		b.SetResolver("-name-/options.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "56a843f683c28af8d3acb35582da637c"})
-		b.SetResolver("-name-/options_test.go.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "91ab460f060e204b86863ca1392680ef"})
-		b.SetResolver("-name-/templates/example.txt.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "67c2b59c8741c3fe3f9db52e4e4a72ed"})
 	}()
 
 	func() {
