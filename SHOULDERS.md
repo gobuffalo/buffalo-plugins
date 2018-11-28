@@ -113,6 +113,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/shoulders/shoulders](https://godoc.org/github.com/gobuffalo/shoulders/shoulders)
 
+* [github.com/gobuffalo/syncx](https://godoc.org/github.com/gobuffalo/syncx)
+
 * [github.com/gobuffalo/tags](https://godoc.org/github.com/gobuffalo/tags)
 
 * [github.com/gobuffalo/tags/form](https://godoc.org/github.com/gobuffalo/tags/form)
