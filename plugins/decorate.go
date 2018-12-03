@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 
 	"github.com/gobuffalo/envy"
 	"github.com/spf13/cobra"
@@ -41,7 +42,7 @@ func Decorate(c Command) *cobra.Command {
 			ex.Stdin = os.Stdin
 			ex.Stdout = os.Stdout
 			ex.Stderr = os.Stderr
-			return ex.Run()
+			return log(strings.Join(ex.Args, " "), ex.Run)
 		},
 	}
 	cc.DisableFlagParsing = true
