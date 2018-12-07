@@ -3,11 +3,11 @@ package plugin
 import (
 	"context"
 	"os"
-	"sort"
 	"strings"
 	"testing"
 
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/gentest"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/stretchr/testify/require"
 )
@@ -58,24 +58,19 @@ func Test_Generator(t *testing.T) {
 		"cmd/version.go",
 		"main.go",
 	}
-	sort.Strings(files)
+	r.NoError(gentest.CompareFiles(files, res.Files))
 
-	for i, f := range res.Files {
-		r.Equal(files[i], f.Name())
-	}
-	r.Len(res.Files, len(files))
-
-	f := res.Files[6]
-	r.Equal("README.md", f.Name())
+	f, err := res.Find("README.md")
+	r.NoError(err)
 	r.Contains(f.String(), opts.PluginPkg)
 
-	f = res.Files[12]
-	r.Equal("cmd/version.go", f.Name())
+	f, err = res.Find("cmd/version.go")
+	r.NoError(err)
 	r.Contains(f.String(), opts.PluginPkg+"/"+opts.ShortName)
 	r.Contains(f.String(), opts.ShortName+".Version")
 
-	f = res.Files[13]
-	r.Equal("main.go", f.Name())
+	f, err = res.Find("main.go")
+	r.NoError(err)
 	r.Contains(f.String(), "github.com/foo/buffalo-bar/cmd")
 
 }
