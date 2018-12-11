@@ -13,6 +13,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// ErrPlugMissing ...
 var ErrPlugMissing = errors.New("plugin missing")
 
 func Decorate(c Command) *cobra.Command {
@@ -59,6 +60,7 @@ func Decorate(c Command) *cobra.Command {
 	return cc
 }
 
+// LookPath ...
 func LookPath(s string) (string, error) {
 	if _, err := os.Stat(s); err == nil {
 		return s, nil
