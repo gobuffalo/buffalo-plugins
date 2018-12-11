@@ -13,6 +13,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// ErrPlugMissing ...
 var ErrPlugMissing = errors.New("plugin missing")
 
 func Decorate(c Command) *cobra.Command {
