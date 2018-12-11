@@ -60,6 +60,7 @@ func Decorate(c Command) *cobra.Command {
 	return cc
 }
 
+// LookPath ...
 func LookPath(s string) (string, error) {
 	if _, err := os.Stat(s); err == nil {
 		return s, nil
