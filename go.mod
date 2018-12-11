@@ -4,7 +4,7 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/gobuffalo/envy v1.6.11
 	github.com/gobuffalo/events v1.1.8
-	github.com/gobuffalo/genny v0.0.0-20181207193730-587570ab2cf7
+	github.com/gobuffalo/genny v0.0.0-20181211165820-e26c8466f14d
 	github.com/gobuffalo/licenser v0.0.0-20181203160806-fe900bbede07
 	github.com/gobuffalo/logger v0.0.0-20181127160119-5b956e21995c
 	github.com/gobuffalo/meta v0.0.0-20181127070345-0d7e59dd540b
