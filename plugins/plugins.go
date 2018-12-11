@@ -175,9 +175,14 @@ func listPlugDeps(app meta.App) (List, error) {
 	}
 	for _, p := range plugs.List() {
 		ctx, cancel := context.WithTimeout(context.Background(), timeout())
+		defer cancel()
 		bin := p.Binary
 		if len(p.Local) != 0 {
 			bin = p.Local
+		}
+		bin, err := LookPath(bin)
+		if err != nil {
+			return list, err
 		}
 		commands := askBin(ctx, bin)
 		cancel()
