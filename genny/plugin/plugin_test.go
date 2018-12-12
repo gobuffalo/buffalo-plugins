@@ -1,12 +1,9 @@
 package plugin
 
 import (
-	"context"
-	"os"
 	"strings"
 	"testing"
 
-	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/gentest"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/stretchr/testify/require"
@@ -20,8 +17,8 @@ func Test_Generator(t *testing.T) {
 		Author:    "Homer Simpson",
 		ShortName: "bar",
 	}
-	run := genny.DryRunner(context.Background())
-	run.Root = os.TempDir()
+
+	run := gentest.NewRunner()
 
 	gg, err := New(opts)
 	r.NoError(err)
