@@ -101,6 +101,17 @@ var _ = func() error {
 	}()
 
 	func() {
+		b := packr.New("github.com/gobuffalo/release/genny/initgen/templates", "../initgen/templates")
+		b.SetResolver("-dot-travis.yml", packr.Pointer{ForwardBox: gk, ForwardPath: "d9aa2bec893011a6984e782548b10ac5"})
+	}()
+
+	func() {
+		b := packr.New("github.com/gobuffalo/release/genny/makefile/templates", "../makefile/templates")
+		b.SetResolver("-dot-gometalinter.json", packr.Pointer{ForwardBox: gk, ForwardPath: "8be431759f42633f3108b188f8de6675"})
+		b.SetResolver("Makefile.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "22ff05a4b44a03ae13723f6a9efc10e2"})
+	}()
+
+	func() {
 		b := packr.New("release:genny/git", "../git/templates")
 		b.SetResolver("-dot-gitignore.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "df2571aaa5053efc9adf6f1c937897f0"})
 	}()
@@ -108,17 +119,6 @@ var _ = func() error {
 	func() {
 		b := packr.New("release:genny:goreleaser", "../goreleaser/templates")
 		b.SetResolver("-dot-goreleaser.yml.plush.tmpl", packr.Pointer{ForwardBox: gk, ForwardPath: "ad3cd1c511f6e620beff7f7e5adbd878"})
-	}()
-
-	func() {
-		b := packr.New("release:genny:initgen", "../initgen/templates")
-		b.SetResolver("-dot-travis.yml", packr.Pointer{ForwardBox: gk, ForwardPath: "d9aa2bec893011a6984e782548b10ac5"})
-	}()
-
-	func() {
-		b := packr.New("release:genny:makefile", "../makefile/templates")
-		b.SetResolver("-dot-gometalinter.json", packr.Pointer{ForwardBox: gk, ForwardPath: "8be431759f42633f3108b188f8de6675"})
-		b.SetResolver("Makefile.plush", packr.Pointer{ForwardBox: gk, ForwardPath: "22ff05a4b44a03ae13723f6a9efc10e2"})
 	}()
 
 	return nil
