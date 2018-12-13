@@ -85,6 +85,10 @@ func LookPath(s string) (string, error) {
 
 	for _, p := range looks {
 		lp := filepath.Join(p, s)
+		lp, err = filepath.EvalSymlinks(lp)
+		if err != nil {
+			return "", errors.WithStack(err)
+		}
 		if _, err := os.Stat(lp); err == nil {
 			bin = lp
 			break
