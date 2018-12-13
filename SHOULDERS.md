@@ -33,8 +33,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/buffalo-plugins/plugins/plugdeps](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugdeps)
 
-* [github.com/gobuffalo/buffalo/packrd](https://godoc.org/github.com/gobuffalo/buffalo/packrd)
-
 * [github.com/gobuffalo/envy](https://godoc.org/github.com/gobuffalo/envy)
 
 * [github.com/gobuffalo/events](https://godoc.org/github.com/gobuffalo/events)
