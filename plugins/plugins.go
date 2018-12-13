@@ -15,6 +15,7 @@ import (
 	"github.com/gobuffalo/meta"
 	"github.com/karrick/godirwalk"
 	"github.com/markbates/oncer"
+	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
@@ -182,7 +183,10 @@ func listPlugDeps(app meta.App) (List, error) {
 		}
 		bin, err := LookPath(bin)
 		if err != nil {
-			return list, err
+			if errors.Cause(err) != ErrPlugMissing {
+				return list, err
+			}
+			continue
 		}
 		commands := askBin(ctx, bin)
 		cancel()

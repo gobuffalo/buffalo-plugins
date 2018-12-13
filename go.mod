@@ -12,6 +12,7 @@ require (
 	github.com/gobuffalo/plush v3.7.32+incompatible
 	github.com/gobuffalo/plushgen v0.0.0-20181207152837-eedb135bd51b
 	github.com/gobuffalo/release v1.1.6
+	github.com/gobuffalo/tags v2.0.15+incompatible // indirect
 	github.com/karrick/godirwalk v1.7.7
 	github.com/markbates/going v1.0.2
 	github.com/markbates/oncer v0.0.0-20181203154359-bf2de49a0be2
