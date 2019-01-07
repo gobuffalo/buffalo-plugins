@@ -15,7 +15,8 @@ import (
 )
 
 var addOptions = struct {
-	dryRun bool
+	dryRun    bool
+	buildTags []string
 }{}
 
 var addCmd = &cobra.Command{
@@ -33,12 +34,14 @@ var addCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 
+		tags := app.BuildTags("", addOptions.buildTags...)
 		for _, a := range args {
 			a = strings.TrimSpace(a)
 			bin := path.Base(a)
 			plug := plugdeps.Plugin{
 				Binary: bin,
 				GoGet:  a,
+				Tags:   tags,
 			}
 			if _, err := os.Stat(a); err == nil {
 				plug.Local = a
@@ -61,4 +64,5 @@ var addCmd = &cobra.Command{
 
 func init() {
 	addCmd.Flags().BoolVarP(&addOptions.dryRun, "dry-run", "d", false, "dry run")
+	addCmd.Flags().StringSliceVarP(&addOptions.buildTags, "tags", "t", []string{}, "build tags")
 }

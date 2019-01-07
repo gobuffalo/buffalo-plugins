@@ -29,5 +29,10 @@ func (opts *Options) Validate() error {
 		}
 		opts.Plugins = plugs.List()
 	}
+
+	for i, p := range opts.Plugins {
+		p.Tags = opts.App.BuildTags("", p.Tags...)
+		opts.Plugins[i] = p
+	}
 	return nil
 }
