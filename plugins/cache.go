@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/user"
 	"path/filepath"
 	"sync"
 
@@ -19,7 +20,13 @@ type cachedPlugin struct {
 
 type cachedPlugins map[string]cachedPlugin
 
-var cachePath = filepath.Join(envy.Get("HOME", "."), ".buffalo", "plugin.cache")
+var cachePath = func() string {
+	home := "."
+	if usr, err := user.Current(); err == nil {
+		home = usr.HomeDir
+	}
+	return filepath.Join(home, ".buffalo", "plugin.cache")
+}()
 
 var cacheMoot sync.RWMutex
 
