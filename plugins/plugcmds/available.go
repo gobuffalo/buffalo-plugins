@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io"
 	"os"
-	"sync"
 
 	"github.com/gobuffalo/buffalo-plugins/plugins"
 	"github.com/gobuffalo/events"
@@ -15,16 +14,14 @@ import (
 // NewAvailable returns a fully formed Available type
 func NewAvailable() *Available {
 	return &Available{
-		plugs: map[string]plug{},
-		moot:  &sync.RWMutex{},
+		plugs: plugMap{},
 	}
 }
 
 // Available used to manage all of the available commands
 // for the plugin
 type Available struct {
-	plugs map[string]plug
-	moot  *sync.RWMutex
+	plugs plugMap
 }
 
 type plug struct {
@@ -39,7 +36,7 @@ func (p plug) String() string {
 }
 
 // Cmd returns the "available" command
-func (a Available) Cmd() *cobra.Command {
+func (a *Available) Cmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "available",
 		Short: "a list of available buffalo plugins",
@@ -50,13 +47,12 @@ func (a Available) Cmd() *cobra.Command {
 }
 
 // Commands returns all of the commands that are available
-func (a Available) Commands() []*cobra.Command {
+func (a *Available) Commands() []*cobra.Command {
 	cmds := []*cobra.Command{a.Cmd()}
-	a.moot.RLock()
-	for _, p := range a.plugs {
+	a.plugs.Range(func(_ string, p plug) bool {
 		cmds = append(cmds, p.Cmd)
-	}
-	a.moot.RUnlock()
+		return true
+	})
 	return cmds
 }
 
@@ -82,9 +78,7 @@ func (a *Available) Add(bufCmd string, cmd *cobra.Command) error {
 			UseCommand:     cmd.Use,
 		},
 	}
-	a.moot.Lock()
-	a.plugs[p.String()] = p
-	a.moot.Unlock()
+	a.plugs.Store(p.String(), p)
 	return nil
 }
 
@@ -92,33 +86,58 @@ func (a *Available) Add(bufCmd string, cmd *cobra.Command) error {
 // on to the other command. This is the recommended
 // approach for using Available.
 //	a.Mount(rootCmd)
-func (a Available) Mount(cmd *cobra.Command) {
+func (a *Available) Mount(cmd *cobra.Command) {
 	// mount all the cmds on to the cobra command
 	cmd.AddCommand(a.Cmd())
-	a.moot.RLock()
-	for _, p := range a.plugs {
+	a.plugs.Range(func(_ string, p plug) bool {
 		cmd.AddCommand(p.Cmd)
-	}
-	a.moot.RUnlock()
+		return true
+	})
 }
 
 // Encode into the required Buffalo plugins available
 // formate
 func (a *Available) Encode(w io.Writer) error {
 	var plugs plugins.Commands
-	a.moot.RLock()
-	for _, p := range a.plugs {
+	a.plugs.Range(func(_ string, p plug) bool {
 		plugs = append(plugs, p.Plugin)
-	}
-	a.moot.RUnlock()
+		return true
+	})
 	return json.NewEncoder(w).Encode(plugs)
 }
 
 // Listen adds a command for github.com/gobuffalo/events.
+// This will listen for ALL events. Use ListenFor to
+// listen to a regex of events.
 func (a *Available) Listen(fn func(e events.Event) error) error {
+	return a.Add("events", buildListen(fn))
+}
+
+// ListenFor adds a command for github.com/gobuffalo/events.
+// This will only listen for events that match the regex provided.
+func (a *Available) ListenFor(rx string, fn func(e events.Event) error) error {
+	cmd := buildListen(fn)
+	p := plug{
+		BuffaloCommand: "events",
+		Cmd:            cmd,
+		Plugin: plugins.Command{
+			Name:           cmd.Use,
+			BuffaloCommand: "events",
+			Description:    cmd.Short,
+			Aliases:        cmd.Aliases,
+			UseCommand:     cmd.Use,
+			ListenFor:      rx,
+		},
+	}
+	a.plugs.Store(p.String(), p)
+	return nil
+}
+
+func buildListen(fn func(e events.Event) error) *cobra.Command {
 	listenCmd := &cobra.Command{
-		Use:   "listen",
-		Short: "listens to github.com/gobuffalo/events",
+		Use:     "listen",
+		Short:   "listens to github.com/gobuffalo/events",
+		Aliases: []string{},
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 0 {
 				return errors.New("must pass a payload")
@@ -133,5 +152,5 @@ func (a *Available) Listen(fn func(e events.Event) error) error {
 			return fn(e)
 		},
 	}
-	return a.Add("events", listenCmd)
+	return listenCmd
 }
