@@ -21,6 +21,6 @@ func init() {
 
 	Available.Add("generate", generateCmd)
 	Available.Add("root", pluginsCmd)
-	Available.Listen(Listen)
+	Available.ListenFor("buffalo:setup:.+", Listen)
 	Available.Mount(rootCmd)
 }
