@@ -7,7 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/markbates/going/defaults"
 	"github.com/pkg/errors"
 )
 
@@ -47,7 +46,11 @@ func (opts *Options) Validate() error {
 		if err != nil {
 			return errors.WithStack(err)
 		}
-		opts.Author = defaults.String(u.Name, u.Username)
+		if len(u.Name) != 0 {
+			opts.Author = u.Name
+		} else if len(u.Username) != 0 {
+			opts.Author = u.Username
+		}
 	}
 
 	return nil
