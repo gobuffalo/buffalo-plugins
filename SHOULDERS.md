@@ -155,8 +155,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/markbates/deplist](https://godoc.org/github.com/markbates/deplist)
 
-* [github.com/markbates/going/defaults](https://godoc.org/github.com/markbates/going/defaults)
-
 * [github.com/markbates/inflect](https://godoc.org/github.com/markbates/inflect)
 
 * [github.com/markbates/oncer](https://godoc.org/github.com/markbates/oncer)
