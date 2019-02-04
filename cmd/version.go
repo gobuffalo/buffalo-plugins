@@ -10,7 +10,7 @@ import (
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "current version of <%= opts.ShortName %>",
+	Short: "current version of buffalo-plugins",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println("buffalo-plugins", plugins.Version)
 		return nil

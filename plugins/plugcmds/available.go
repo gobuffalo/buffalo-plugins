@@ -96,7 +96,7 @@ func (a *Available) Mount(cmd *cobra.Command) {
 }
 
 // Encode into the required Buffalo plugins available
-// formate
+// format
 func (a *Available) Encode(w io.Writer) error {
 	var plugs plugins.Commands
 	a.plugs.Range(func(_ string, p plug) bool {
