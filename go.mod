@@ -9,7 +9,7 @@ require (
 	github.com/gobuffalo/licenser v0.0.0-20190224205124-37799bc2ebf6
 	github.com/gobuffalo/logger v0.0.0-20190224201004-be78ebfea0fa
 	github.com/gobuffalo/meta v0.0.0-20190207205153-50a99e08b8cf
-	github.com/gobuffalo/packr/v2 v2.0.1
+	github.com/gobuffalo/packr/v2 v2.0.2
 	github.com/gobuffalo/plush v3.7.33+incompatible
 	github.com/gobuffalo/plushgen v0.0.0-20190224160205-347ea233336e
 	github.com/gobuffalo/release v1.2.0

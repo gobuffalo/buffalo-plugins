@@ -28,6 +28,8 @@ func Test_Options_Validate(t *testing.T) {
 	r.NoError(err)
 	if len(u.Name) != 0 {
 		r.Equal(u.Name, opts.Author)
+	} else if len(u.Username) != 0 {
+		r.Equal(u.Username, opts.Author)
 	} else {
 		r.Equal("unknown", opts.Author)
 	}
