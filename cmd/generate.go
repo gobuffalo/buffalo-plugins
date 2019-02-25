@@ -10,7 +10,7 @@ import (
 	"github.com/gobuffalo/buffalo-plugins/genny/plugin/with"
 	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/gogen"
 	"github.com/gobuffalo/licenser/genny/licenser"
 	"github.com/gobuffalo/logger"
 	"github.com/pkg/errors"
@@ -56,7 +56,7 @@ var generateCmd = &cobra.Command{
 			r.WithGroup(gg)
 		}
 
-		g, err := gotools.GoFmt(r.Root)
+		g, err := gogen.Fmt(r.Root)
 		if err != nil {
 			return errors.WithStack(err)
 		}
