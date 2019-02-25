@@ -8,7 +8,7 @@ import (
 	"github.com/gobuffalo/buffalo-plugins/genny/add"
 	"github.com/gobuffalo/buffalo-plugins/plugins/plugdeps"
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/gogen"
 	"github.com/pkg/errors"
 )
 
@@ -39,7 +39,7 @@ func New(opts *Options) (*genny.Group, error) {
 		if len(p.Tags) > 0 {
 			args = append(args, "-tags", p.Tags.String())
 		}
-		g.RunFn(gotools.Get(p.GoGet, args...))
+		g.Command(gogen.Get(p.GoGet, args...))
 		if opts.Vendor {
 			g.RunFn(pRun(proot, p))
 		}

@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/gobuffalo/genny/gentest"
-	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/gogen/gomods"
 	"github.com/stretchr/testify/require"
 )
 
@@ -43,7 +43,8 @@ func Test_Generator(t *testing.T) {
 		".gitignore",
 		".gometalinter.json",
 		".goreleaser.yml.plush",
-		".travis.yml",
+		"azure-pipelines.yml",
+		"azure-tests.yml",
 		"LICENSE",
 		"Makefile",
 		"README.md",

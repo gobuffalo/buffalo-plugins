@@ -50,6 +50,8 @@ func (opts *Options) Validate() error {
 			opts.Author = u.Name
 		} else if len(u.Username) != 0 {
 			opts.Author = u.Username
+		} else {
+			opts.Author = "unknown"
 		}
 	}
 
