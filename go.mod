@@ -12,7 +12,7 @@ require (
 	github.com/gobuffalo/packr/v2 v2.0.2
 	github.com/gobuffalo/plush v3.7.33+incompatible
 	github.com/gobuffalo/plushgen v0.0.0-20190224160205-347ea233336e
-	github.com/gobuffalo/release v1.2.0
+	github.com/gobuffalo/release v1.2.2
 	github.com/gofrs/uuid v3.2.0+incompatible // indirect
 	github.com/karrick/godirwalk v1.7.8
 	github.com/markbates/oncer v0.0.0-20181203154359-bf2de49a0be2
