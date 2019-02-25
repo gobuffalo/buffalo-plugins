@@ -26,5 +26,9 @@ func Test_Options_Validate(t *testing.T) {
 
 	u, err := user.Current()
 	r.NoError(err)
-	r.Equal(u.Name, opts.Author)
+	if len(u.Name) != 0 {
+		r.Equal(u.Name, opts.Author)
+	} else {
+		r.Equal("unknown", opts.Author)
+	}
 }
