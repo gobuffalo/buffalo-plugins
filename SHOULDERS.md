@@ -39,8 +39,12 @@ Thank you to the following **GIANTS**:
 
 * [github.com/sirupsen/logrus](https://godoc.org/github.com/sirupsen/logrus)
 
+* [github.com/spf13/afero](https://godoc.org/github.com/spf13/afero)
+
 * [github.com/spf13/cobra](https://godoc.org/github.com/spf13/cobra)
 
 * [github.com/spf13/viper](https://godoc.org/github.com/spf13/viper)
 
 * [github.com/stretchr/testify](https://godoc.org/github.com/stretchr/testify)
+
+* [golang.org/x/text](https://godoc.org/golang.org/x/text)

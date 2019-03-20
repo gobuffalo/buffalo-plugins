@@ -1,3 +1,3 @@
 package plugins
 
-const Version = "v1.13.1"
+const Version = "v1.14.0"
