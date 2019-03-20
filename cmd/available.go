@@ -18,6 +18,7 @@ func init() {
 	pluginsCmd.AddCommand(generateCmd)
 	pluginsCmd.AddCommand(removeCmd)
 	pluginsCmd.AddCommand(installCmd)
+	pluginsCmd.AddCommand(cacheCmd)
 
 	Available.Add("generate", generateCmd)
 	Available.Add("root", pluginsCmd)

@@ -9,6 +9,9 @@ import (
 var cacheCmd = &cobra.Command{
 	Use:   "cache",
 	Short: "commands for managing the plugins cache",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		return cache.ListCmd.RunE(cmd, args)
+	},
 }
 
 func init() {
