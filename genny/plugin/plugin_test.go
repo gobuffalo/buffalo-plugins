@@ -1,7 +1,6 @@
 package plugin
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/gobuffalo/genny/gentest"
@@ -34,14 +33,10 @@ func Test_Generator(t *testing.T) {
 		cmds = []string{"git init", "go mod init github.com/foo/buffalo-bar", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
 	}
 
-	r.Len(res.Commands, len(cmds))
-	for i, x := range cmds {
-		r.Equal(x, strings.TrimSpace(strings.Join(res.Commands[i].Args, " ")))
-	}
+	gentest.CompareCommands(cmds, res.Commands)
 
 	files := []string{
 		".gitignore",
-		".gometalinter.json",
 		".goreleaser.yml.plush",
 		"azure-pipelines.yml",
 		"azure-tests.yml",
