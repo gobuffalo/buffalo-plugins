@@ -9,7 +9,6 @@ import (
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/plushgen"
 	"github.com/gobuffalo/release/genny/initgen"
-	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/pkg/errors"
 )
 
@@ -43,10 +42,8 @@ func New(opts *Options) (*genny.Group, error) {
 	ig, err := initgen.New(&initgen.Options{
 		Version:     "v0.0.1",
 		VersionFile: filepath.Join(opts.ShortName, "version.go"),
-		Options: &makefile.Options{
-			MainFile: "main.go",
-			Root:     opts.Root,
-		},
+		MainFile:    "main.go",
+		Root:        opts.Root,
 	})
 	if err != nil {
 		return gg, errors.WithStack(err)
