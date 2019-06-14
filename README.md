@@ -1,5 +1,9 @@
 # buffalo-plugins
 
+**DEPRECATED**
+*As of Buffalo `v0.14.6` this plugin has been merged into Buffalo. This plugin will no longer be updated or needed.*
+
+
 A plugin for working with [Buffalo](https://gobuffalo.io) plugins.
 
 ## Installation
