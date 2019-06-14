@@ -7,13 +7,19 @@ Thank you to the following **GIANTS**:
 
 * [github.com/BurntSushi/toml](https://godoc.org/github.com/BurntSushi/toml)
 
+* [github.com/Masterminds/semver](https://godoc.org/github.com/Masterminds/semver)
+
 * [github.com/gobuffalo/envy](https://godoc.org/github.com/gobuffalo/envy)
 
 * [github.com/gobuffalo/events](https://godoc.org/github.com/gobuffalo/events)
 
 * [github.com/gobuffalo/genny](https://godoc.org/github.com/gobuffalo/genny)
 
+* [github.com/gobuffalo/gitgen](https://godoc.org/github.com/gobuffalo/gitgen)
+
 * [github.com/gobuffalo/gogen](https://godoc.org/github.com/gobuffalo/gogen)
+
+* [github.com/gobuffalo/helpers](https://godoc.org/github.com/gobuffalo/helpers)
 
 * [github.com/gobuffalo/licenser](https://godoc.org/github.com/gobuffalo/licenser)
 
@@ -28,6 +34,8 @@ Thank you to the following **GIANTS**:
 * [github.com/gobuffalo/plushgen](https://godoc.org/github.com/gobuffalo/plushgen)
 
 * [github.com/gobuffalo/release](https://godoc.org/github.com/gobuffalo/release)
+
+* [github.com/gobuffalo/shoulders](https://godoc.org/github.com/gobuffalo/shoulders)
 
 * [github.com/karrick/godirwalk](https://godoc.org/github.com/karrick/godirwalk)
 
